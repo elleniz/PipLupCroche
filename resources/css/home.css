@@ -1,0 +1,81 @@
+/* Topbar Rosa */
+.top-bar {
+    background-color: var(--bg-topbar);
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'Titillium Web', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Header Principal */
+.main-header {
+    background-color:   #fff6ed;
+}
+
+/* Logo */
+.header-logo {
+    max-height: 105px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Container de Pesquisa */
+.search-container {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #E6BFC2;
+    padding-bottom: 4px;
+    width: 280px;
+}
+
+.search-input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    color: #55003E; 
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 0.95rem;
+}
+
+.search-input::placeholder {
+    color: #55003E;
+}
+
+.search-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0 4px;
+    color: #55003E; 
+    font-size: 1rem;
+}
+
+.nav-header {
+    background-color: var(--bg-header);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-toggle-custom {
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    padding: 0.5rem 0.5rem;
+}
+
+.dropdown-toggle-custom:hover, 
+.dropdown-toggle-custom:focus {
+    color: #55003E;
+}
+
+.icon-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.8rem;
+}

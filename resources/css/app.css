@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+/* 1. Imports de CSS customizado local */
+@import "./home.css";
+@import "./login.css";
+
+/* 2. Fonte do Google */
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap');
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Titillium Web', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* 3. Variáveis e regras globais */
+:root {
+    --bg-topbar: #E6BFC2;
+    --bg-header: #FFF6ED;
+    --text-color: #55003E;
+}
+
+body {
+    background-color: #fff6ed !important;
+    color: var(--text-color) !important;
+    font-family: 'Titillium Web', sans-serif !important;
+}
+
+a {
+    color: inherit;
+}

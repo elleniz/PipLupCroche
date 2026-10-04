@@ -1,0 +1,78 @@
+.login-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid rgba(232, 197, 200, 0.4);
+    border-radius: 8px;
+}
+
+.custom-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.icon-input {
+    position: absolute;
+    left: 12px;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+.custom-input {
+    padding-left: 38px;
+    border: 1px solid #e8c5c8;
+    background-color: var(--bg-header);
+    color: var(--text-color);
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.custom-input:focus {
+    background-color: #ffffff;
+    border-color: var(--text-color);
+    box-shadow: 0 0 0 0.2rem rgba(92, 35, 43, 0.15);
+    color: var(--text-color);
+}
+
+.btn-login {
+    background-color: var(--text-color);
+    color: #ffffff;
+    border: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-login:hover {
+    background-color: #441920;
+    color: #ffffff;
+}
+
+.custom-checkbox:checked {
+    background-color: var(--text-color);
+    border-color: var(--text-color);
+}
+
+.forgot-link, .register-link {
+    color: var(--text-color);
+    text-decoration: underline;
+}
+
+.forgot-link:hover, .register-link:hover {
+    color: #000000;
+}
+
+.piplup-corner {
+    position: fixed;
+    bottom: -120px;
+    right: 10px;
+    width: 760px;
+    height: auto;
+    z-index: -1;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .piplup-corner {
+        display: none;
+    }
+}
