@@ -39,7 +39,7 @@ class UsuarioController extends Controller
             'vagas',
             'vagaSelecionada'
         ));
-    
+
         /*
          * Mostra somente vagas que estão abertas.
          *

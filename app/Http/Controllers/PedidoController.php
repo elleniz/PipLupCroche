@@ -119,7 +119,7 @@ class PedidoController extends Controller
             ->with('success', 'Pedido removido com sucesso!');
     }
 
-    
+
     public function search(Request $request)
     {
         if (!empty($request->valor)) {

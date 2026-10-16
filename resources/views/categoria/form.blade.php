@@ -147,7 +147,7 @@
                 </option>
 
                 <option value="tiara"
-                    {{ old('tipo', $data->tipo ?? '') == 'tiara' ? 'selected' : '' }}>  
+                    {{ old('tipo', $data->tipo ?? '') == 'tiara' ? 'selected' : '' }}>
                     Acessório - tiara
                 </option>
 
@@ -162,11 +162,11 @@
                 </option>
 
                 <option value="acessorio pequeno"
-                    {{ old('tipo', $data->tipo ?? '') == 'acessorio pequeno' ? 'selected' : '' }}>  
+                    {{ old('tipo', $data->tipo ?? '') == 'acessorio pequeno' ? 'selected' : '' }}>
                     Acessório pequeno
                 </option>
 
-                
+
                 <option value="utilitário"
                     {{ old('tipo', $data->tipo ?? '') == 'utilitário' ? 'selected' : '' }}>
                     Utilitário

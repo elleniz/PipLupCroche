@@ -61,7 +61,7 @@
             value="<?php echo e(old('id', $data->id ?? '')); ?>">
 
 
-        
+
 
         <div class="mb-3">
 
@@ -88,7 +88,7 @@
         </div>
 
 
-        
+
 
         <div class="mb-3">
 
@@ -115,7 +115,7 @@
         </div>
 
 
-        
+
 
         <div class="mb-3">
 
@@ -142,7 +142,7 @@
         </div>
 
 
-        
+
 
         <div class="mb-3">
 
@@ -169,7 +169,7 @@
         </div>
 
 
-        
+
 
         <div class="mb-3">
 
@@ -196,7 +196,7 @@
         </div>
 
 
-        
+
 
         <div class="mb-3">
 
@@ -222,7 +222,7 @@
         </div>
 
 
-        
+
 
         <div class="mb-3">
 
@@ -262,7 +262,7 @@
         </div>
 
 
-        
+
 
         <div id="dadosVaga"
             style="display: none;
@@ -279,7 +279,7 @@
             </h5>
 
 
-            
+
 
             <div class="mb-3">
 
@@ -322,7 +322,7 @@
             </div>
 
 
-            
+
 
             <div id="selecionarVaga"
                 class="mb-3"
@@ -374,7 +374,7 @@
             </div>
 
 
-            
+
 
             <div class="mb-3">
 
@@ -424,7 +424,7 @@
             </div>
 
 
-            
+
 
             <div class="mb-3">
 
@@ -452,7 +452,7 @@
             </div>
 
 
-            
+
 
             <div class="mb-3">
 
@@ -502,7 +502,7 @@
             </div>
 
 
-            
+
 
             <div class="mb-3">
 
@@ -552,7 +552,7 @@
             </div>
 
 
-            
+
 
             <div class="mb-3">
 
@@ -602,7 +602,7 @@
             </div>
 
 
-            
+
 
             <div class="mb-3">
 
@@ -632,7 +632,7 @@
         </div>
 
 
-        
+
 
         <div class="d-flex justify-content-between mt-3">
 

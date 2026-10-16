@@ -49,7 +49,7 @@
                value="<?php echo e(old('id', $data->id ?? '')); ?>">
 
 
-        
+
 
         <?php if($errors->any()): ?>
 
@@ -67,7 +67,7 @@
         <?php endif; ?>
 
 
-        
+
 
         <div class="mb-3">
 
@@ -93,7 +93,7 @@
         </div>
 
 
-        
+
 
         <div class="mb-3">
 
@@ -119,7 +119,7 @@
         </div>
 
 
-        
+
 
         <label for="tipo"
             class="form-label"
@@ -147,7 +147,7 @@
                 </option>
 
                 <option value="tiara"
-                    <?php echo e(old('tipo', $data->tipo ?? '') == 'tiara' ? 'selected' : ''); ?>>  
+                    <?php echo e(old('tipo', $data->tipo ?? '') == 'tiara' ? 'selected' : ''); ?>>
                     Acessório - tiara
                 </option>
 
@@ -162,11 +162,11 @@
                 </option>
 
                 <option value="acessorio pequeno"
-                    <?php echo e(old('tipo', $data->tipo ?? '') == 'acessorio pequeno' ? 'selected' : ''); ?>>  
+                    <?php echo e(old('tipo', $data->tipo ?? '') == 'acessorio pequeno' ? 'selected' : ''); ?>>
                     Acessório pequeno
                 </option>
 
-                
+
                 <option value="utilitário"
                     <?php echo e(old('tipo', $data->tipo ?? '') == 'utilitário' ? 'selected' : ''); ?>>
                     Utilitário
@@ -195,7 +195,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
 
 
-        
+
 
         <div class="d-flex justify-content-between mt-3">
 

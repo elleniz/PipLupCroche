@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;    
+use Illuminate\Http\Request;
 use App\Models\Produto;
 use App\Models\Categoria;
 
@@ -31,7 +31,7 @@ class ProdutoController extends Controller
         'nome' => ['required', 'string', 'max:255'],
         'preco' => ['required'],
         'quantidade' => ['required', 'integer', 'min:0'],
-        'categoria_id' => ['required', 'exists:categorias,id', 'unique:produtos,categoria_id'], 
+        'categoria_id' => ['required', 'exists:categorias,id', 'unique:produtos,categoria_id'],
         'peso' => ['required', 'string', 'max:20'],
         'material' => ['required', 'string', 'max:40'],
 

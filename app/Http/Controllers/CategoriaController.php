@@ -74,15 +74,15 @@ class CategoriaController extends Controller
     }
 
 
-    public function search(Request $request) { 
-        if (!empty($request->valor)) { 
-            if ($request->tipo === 'produto') { 
-                $dados = Categoria::whereHas('produto', function ($query) use ($request) { 
-                    $query->where( 'nome', 'like', "%$request->valor%" ); 
-                    })->with('produto')->get(); 
-                    } else { 
-                        $dados = Categoria::where( $request->tipo, 'like', "%$request->valor%" )->with('produto')->get(); } 
-                        } else { $dados = Categoria::with('produto')->get(); 
+    public function search(Request $request) {
+        if (!empty($request->valor)) {
+            if ($request->tipo === 'produto') {
+                $dados = Categoria::whereHas('produto', function ($query) use ($request) {
+                    $query->where( 'nome', 'like', "%$request->valor%" );
+                    })->with('produto')->get();
+                    } else {
+                        $dados = Categoria::where( $request->tipo, 'like', "%$request->valor%" )->with('produto')->get(); }
+                        } else { $dados = Categoria::with('produto')->get();
                         } return view('categoria.list', compact('dados')); }
 
     private function validarDados(Request $request)
