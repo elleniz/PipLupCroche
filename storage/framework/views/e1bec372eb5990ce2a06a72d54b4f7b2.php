@@ -41,7 +41,7 @@
                         <option value="nome">Nome</option>
                         <option value="descricao">Descrição</option>
                         <option value="tipo">Tipo</option>
-                        <option value="produto">Produto</option>
+                        <option value="produto ">Produto</option>
 
                     </select>
                 </div>

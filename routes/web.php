@@ -8,6 +8,7 @@ use App\Http\Controllers\ClienteLoginController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\VagaController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\PedidoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,7 +105,7 @@ Route::get('/funcionarios/create', [
 Route::post('/funcionarios/store', [
     VagaController::class,
     'store',
-])->name('fuuncionarios.store');
+])->name('funcionarios.store');
 
 Route::get('/funcionarios/edit/{id}', [
     VagaController::class,
@@ -125,6 +126,48 @@ Route::post('/funcionarios/search', [
     VagaController::class,
     'search',
 ])->name('funcionarios.search');
+
+/*
+|--------------------------------------------------------------------------
+| PEDIDOS
+|--------------------------------------------------------------------------
+*/
+
+
+Route::get('/pedidos', [
+    PedidoController::class,
+    'list',
+])->name('pedidos.list');
+
+Route::get('/pedidos/create', [
+    PedidoController::class,
+    'form',
+])->name('pedidos.create');
+
+Route::post('/pedidos/store', [
+    PedidoController::class,
+    'store',
+])->name('pedidos.store');
+
+Route::get('/pedidos/edit/{id}', [
+    PedidoController::class,
+    'form',
+])->name('pedidos.edit');
+
+Route::put('/pedidos/update/{id}', [
+    PedidoController::class,
+    'update',
+])->name('pedidos.update');
+
+Route::delete('/pedidos/{id}', [
+    PedidoController::class,
+    'destroy',
+])->name('pedidos.destroy');
+
+Route::post('/pedidos/search', [
+    PedidoController::class,
+    'search',
+])->name('pedidos.search');
 
 
 /*

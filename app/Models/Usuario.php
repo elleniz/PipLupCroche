@@ -25,5 +25,12 @@ class Usuario extends Model
     {   
     return $this->hasOne(Vaga::class);
     }
+
+    //trabalho 2
+    public function pedidos()
+    {
+        return $this->hasMany(Pedido::class);
+    }
+
 }
 
