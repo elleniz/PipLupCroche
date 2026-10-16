@@ -6,7 +6,7 @@ use App\Models\Produto;
 use App\Models\Categoria;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ProdutoFactory extends Factory
+class PedidoFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +18,7 @@ class ProdutoFactory extends Factory
         return [
 
             'usuario_id' => fake()->numberBetween(1, 10),
-            
+
             'data' => fake()->date(),
 
             'valor_total' => fake()->randomFloat(2, 1, 10),

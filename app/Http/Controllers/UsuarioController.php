@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 
 class UsuarioController extends Controller
 {
-    public function list()
+    public function index()
     {
         $dados = Usuario::with('vaga')->get();
 

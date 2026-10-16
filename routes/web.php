@@ -9,6 +9,7 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\VagaController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\ItemPedidoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -134,40 +135,26 @@ Route::post('/funcionarios/search', [
 */
 
 
-Route::get('/pedidos', [
-    PedidoController::class,
-    'list',
-])->name('pedidos.list');
+Route::get('/pedidos', [PedidoController::class, 'index'])
+    ->name('pedidos.index');
 
-Route::get('/pedidos/create', [
-    PedidoController::class,
-    'form',
-])->name('pedidos.create');
+Route::get('/pedidos/create', [PedidoController::class, 'create'])
+    ->name('pedidos.create');
 
-Route::post('/pedidos/store', [
-    PedidoController::class,
-    'store',
-])->name('pedidos.store');
+Route::post('/pedidos', [PedidoController::class, 'store'])
+    ->name('pedidos.store');
 
-Route::get('/pedidos/edit/{id}', [
-    PedidoController::class,
-    'form',
-])->name('pedidos.edit');
+Route::post('/pedidos/search', [PedidoController::class, 'search'])
+    ->name('pedidos.search');
 
-Route::put('/pedidos/update/{id}', [
-    PedidoController::class,
-    'update',
-])->name('pedidos.update');
+Route::get('/pedidos/{pedido}/edit', [PedidoController::class, 'edit'])
+    ->name('pedidos.edit');
 
-Route::delete('/pedidos/{id}', [
-    PedidoController::class,
-    'destroy',
-])->name('pedidos.destroy');
+Route::put('/pedidos/{pedido}', [PedidoController::class, 'update'])
+    ->name('pedidos.update');
 
-Route::post('/pedidos/search', [
-    PedidoController::class,
-    'search',
-])->name('pedidos.search');
+Route::delete('/pedidos/{pedido}', [PedidoController::class, 'destroy'])
+    ->name('pedidos.destroy');
 
 
 /*
@@ -233,41 +220,12 @@ Route::post('/logout-cliente', [
 |--------------------------------------------------------------------------
 */
 
-Route::get('/usuario', [
-    UsuarioController::class,
-    'list',
-])->name('usuario.list');
-
-Route::get('/usuario/create', [
-    UsuarioController::class,
-    'form',
-])->name('usuario.create');
-
-Route::post('/usuario/store', [
-    UsuarioController::class,
-    'store',
-])->name('usuario.store');
-
-Route::get('/usuario/edit/{id}', [
-    UsuarioController::class,
-    'form',
-])->name('usuario.edit');
-
-Route::put('/usuario/update/{id}', [
-    UsuarioController::class,
-    'update',
-])->name('usuario.update');
-
-Route::delete('/usuario/{id}', [
-    UsuarioController::class,
-    'destroy',
-])->name('usuario.destroy');
-
 Route::post('/usuario/search', [
     UsuarioController::class,
     'search',
 ])->name('usuario.search');
 
+Route::resource('usuario', \App\Http\Controllers\UsuarioController::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -346,3 +304,33 @@ Route::post('/categoria/search', [
     CategoriaController::class,
     'search',
 ])->name('categoria.search');
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Item pedido
+|--------------------------------------------------------------------------
+*/
+
+
+Route::get('/item_pedido', [ItemPedidoController::class, 'index'])
+    ->name('item_pedido.index');
+
+Route::get('/item_pedido/create', [ItemPedidoController::class, 'create'])
+    ->name('item_pedido.create');
+
+Route::post('/item_pedido', [ItemPedidoController::class, 'store'])
+    ->name('item_pedido.store');
+
+Route::get('/item_pedido/{id}/edit', [ItemPedidoController::class, 'edit'])
+    ->name('item_pedido.edit');
+
+Route::put('/item_pedido/{id}', [ItemPedidoController::class, 'update'])
+    ->name('item_pedido.update');
+
+Route::delete('/item_pedido/{id}', [ItemPedidoController::class, 'destroy'])
+    ->name('item_pedido.destroy');
+
+Route::post('/item_pedido/search', [ItemPedidoController::class, 'search'])
+    ->name('item_pedido.search');

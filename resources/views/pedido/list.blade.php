@@ -17,7 +17,7 @@
             Listagem de Pedidos
         </h3>
 
-        <form action="{{ route('pedido.search') }}" method="post">
+        <form action="{{ route('pedidos.search') }}" method="post">
             @csrf
 
             <div class="row">
@@ -96,7 +96,7 @@
                         Buscar
                     </button>
 
-                    <a href="{{ route('pedido.create') }}"
+                    <a href="{{ route('pedidos.create') }}"
                        class="btn"
                        style="background-color: #e8bcc5;
                               border: none;
@@ -182,7 +182,7 @@
 
                             <a class="btn"
                                title="Editar"
-                               href="{{ route('pedido.edit', $item->id) }}"
+                               href="{{ route('pedidos.edit', $item->id) }}"
                                style="background-color: #ed8eaa;
                                       border: none;
                                       border-radius: 20px;

@@ -16,7 +16,7 @@
             <li class="nav-item">
                 <a class="nav-link fw-semibold"
                    style="color: #55003E; font-size: 14px;"
-                   href="{{ route('usuario.list') }}">
+                   href="{{ url('usuario') }}">
                     USUÁRIOS
                 </a>
             </li>
@@ -48,10 +48,18 @@
             <li class="nav-item">
                 <a class="nav-link fw-semibold"
                    style="color: #55003E; font-size: 14px;"
-                   href="{{ route('pedidos.list') }}">
+                   href="{{ url('pedidos') }}">
                     PEDIDOS
                 </a>
             </li>
+
+            <li class="nav-item">
+    <a class="nav-link fw-semibold"
+       style="color: #55003E; font-size: 14px;"
+       href="{{ url('item_pedido') }}">
+        ITENS DE PEDIDOS
+    </a>
+</li>
 
         </ul>
 
