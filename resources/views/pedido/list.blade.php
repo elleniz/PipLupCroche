@@ -170,7 +170,7 @@
                                    background-color: {{ $loop->odd ? '#f4dada' : '#fff4f1' }};">
                             {{ \Illuminate\Support\Carbon::parse($item->prazo_entrega)->format('d/m/Y') }}
                         </td>
-                        
+
                         <td style="padding: 16px;
                                    background-color: {{ $loop->odd ? '#f4dada' : '#fff4f1' }};">
                             {{ str_replace('_', ' ', $item->status) }}
@@ -198,7 +198,7 @@
                                    text-align: center;
                                    background-color: {{ $loop->odd ? '#f4dada' : '#fff4f1' }};">
 
-                            <form action="{{ route('pedido.destroy', $item->id) }}"
+                            <form action="{{ route('pedidos.destroy', $item->id) }}"
                                   method="post">
 
                                 @csrf
