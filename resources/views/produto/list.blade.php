@@ -38,6 +38,7 @@
                                    font-size: 13px;
                                    height: 40px;">
 
+                        <option value="imagem">Imagem</option>
                         <option value="nome">Nome</option>
                         <option value="preco">Preço</option>
                         <option value="quantidade">Quantidade</option>
@@ -119,6 +120,11 @@
 
                     <th scope="col"
                         style="padding: 16px;">
+                        Imagem produto
+                    </th>
+
+                    <th scope="col"
+                        style="padding: 16px;">
                         #
                     </th>
 
@@ -174,16 +180,28 @@
             </thead>
 
             <tbody>
-
+            
                 @foreach ($dados as $item)
+                    @php
+                        $nome_imagem = !empty($item->imagem)
+                            ? 'storage/imagem/produto/' . $item->imagem
+                            : 'image/no_pic.jpg';
+                    @endphp
 
                     <tr style="background-color: {{ $loop->odd ? '#f4dada' : '#fff4f1' }};">
+                        <td style="padding: 16px;
+                                   background-color: {{ $loop->odd ? '#f4dada' : '#fff4f1' }};"
+                        > <img src="{{ asset($nome_imagem) }}"
+                                width="50px"
+                                height="50px"
+                                alt="Foto do produto">
+                            <!--imagem salvando -- rever -->
+                        </td>
 
-                        <th scope="row"
-                            style="padding: 16px;
+                        <td style="padding: 16px;
                                    background-color: {{ $loop->odd ? '#f4dada' : '#fff4f1' }};">
                             {{ $item->id }}
-                        </th>
+                        </td>
 
                         <td style="padding: 16px;
                                    background-color: {{ $loop->odd ? '#f4dada' : '#fff4f1' }};">

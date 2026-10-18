@@ -20,6 +20,7 @@ class ProdutoController extends Controller
     function create()
     {
         $categorias = Categoria::whereDoesntHave('produto')->get();
+        
         return view('produto.form', compact('categorias'));
         //form recebe as categorias q tao cadastradas
     }
@@ -34,6 +35,7 @@ class ProdutoController extends Controller
         'categoria_id' => ['required', 'exists:categorias,id', 'unique:produtos,categoria_id'],
         'peso' => ['required', 'string', 'max:20'],
         'material' => ['required', 'string', 'max:40'],
+        'imagem' => $nome_imagem,
 
         ], [
             'nome.required' => "O :attribute é obrigatorio",
@@ -43,6 +45,8 @@ class ProdutoController extends Controller
             'categoria_id.unique' => "Essa categoria já está vinculada a outro produto!",
             'peso' => "O :attribute é obrigatório!",
             'material' => "O :attribute é obrigatório!",
+            'imagem.image' => "O :attribute deve ser enviado",
+            'imagem.mimes' => "O :attribute deve ser das extensões:PNG,JPEG,JPG",
 
         ]);
     }
@@ -51,7 +55,17 @@ class ProdutoController extends Controller
     {
         $this->validateForm($request);
 
+        $nome_imagem = null;
+        $imagem = $request->file('imagem');
+        if ($imagem) {
+            $nome_imagem = date('YmdiHs') . "." . $imagem->getClientOriginalExtension();
+            $diretorio = "imagem/produto/";
+            $imagem->storeAs($diretorio, $nome_imagem, 'public');
+
+        }
+
         Produto::create($request->all());
+        
 
         return redirect('produto')->with("success", 'Registro Salvo com sucesso!');
     }
@@ -82,6 +96,8 @@ class ProdutoController extends Controller
             'descricao' => $request->descricao,
             'peso' => $request->peso,
             'material' => $request->material,
+            'imagem' => $request->imagem ?? null,
+
         ]);
 
         return redirect('produto')

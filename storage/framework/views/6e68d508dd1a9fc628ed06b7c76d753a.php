@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('titulo', 'Formulário de Usuários'); ?>
 
 <?php $__env->startSection('conteudo'); ?>
@@ -41,6 +39,7 @@
     <form action="<?php echo e($action); ?>"
         method="post"
         class="p-4"
+        enctype="multipart/form-data"
         style="background-color: #fff;
                 border: 1px solid #ddd;
                 border-radius: 6px;
@@ -61,7 +60,7 @@
             value="<?php echo e(old('id', $data->id ?? '')); ?>">
 
 
-
+        
 
         <div class="mb-3">
 
@@ -88,7 +87,7 @@
         </div>
 
 
-
+        
 
         <div class="mb-3">
 
@@ -115,7 +114,7 @@
         </div>
 
 
-
+        
 
         <div class="mb-3">
 
@@ -142,7 +141,7 @@
         </div>
 
 
-
+        
 
         <div class="mb-3">
 
@@ -169,7 +168,7 @@
         </div>
 
 
-
+        
 
         <div class="mb-3">
 
@@ -196,7 +195,7 @@
         </div>
 
 
-
+        
 
         <div class="mb-3">
 
@@ -222,7 +221,7 @@
         </div>
 
 
-
+        
 
         <div class="mb-3">
 
@@ -262,7 +261,7 @@
         </div>
 
 
-
+        
 
         <div id="dadosVaga"
             style="display: none;
@@ -279,7 +278,7 @@
             </h5>
 
 
-
+            
 
             <div class="mb-3">
 
@@ -322,7 +321,7 @@
             </div>
 
 
-
+            
 
             <div id="selecionarVaga"
                 class="mb-3"
@@ -374,7 +373,7 @@
             </div>
 
 
-
+            
 
             <div class="mb-3">
 
@@ -424,7 +423,7 @@
             </div>
 
 
-
+            
 
             <div class="mb-3">
 
@@ -452,7 +451,7 @@
             </div>
 
 
-
+            
 
             <div class="mb-3">
 
@@ -502,7 +501,7 @@
             </div>
 
 
-
+            
 
             <div class="mb-3">
 
@@ -552,7 +551,7 @@
             </div>
 
 
-
+            
 
             <div class="mb-3">
 
@@ -602,7 +601,7 @@
             </div>
 
 
-
+            
 
             <div class="mb-3">
 
@@ -631,8 +630,18 @@
 
         </div>
 
+        <div class="col-6">
+                <label for="imagem">Imagem</label>
+                <?php
+                    $nome_imagem = !empty($data->imagem) ? $data->imagem : 'sem_imagem.jpg';
+                ?>
+                <img src="/storage/<?php echo e($nome_imagem); ?>" class="rounded-circle" width="200px" height="200px"
+                    alt="Imagem" />
+                <input type="file" name="imagem" class="form-control" value="<?php echo e(old('imagem', $data->imagem ?? '')); ?>">
+            </div>
 
 
+        
 
         <div class="d-flex justify-content-between mt-3">
 
@@ -902,4 +911,5 @@
 </script>
 
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('main', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Ellen\Desktop\PriplupCroche\resources\views/usuario/form.blade.php ENDPATH**/ ?>

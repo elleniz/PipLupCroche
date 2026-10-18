@@ -19,6 +19,7 @@ class Usuario extends Model
         'endereco',
         'data_nascimento',
         'tipo',
+        'imagem',
     ];
 
     public function vaga()

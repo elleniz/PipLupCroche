@@ -269,6 +269,15 @@
 
     </div>
 
+    <label for="imagem">Imagem</label>
+                @php
+                    $nome_imagem = !empty($data->imagem) ? $data->imagem : 'sem_imagem.jpg';
+                @endphp
+                <img src="/storage/{{ $nome_imagem }}" class="rounded-circle" width="200px" height="200px"
+                    alt="Imagem" />
+                <input type="file" name="imagem" class="form-control" value="{{ old('imagem', $data->imagem ?? '') }}">
+            </div>
+
     {{-- BOTÕES --}}
     <div class="d-flex justify-content-between mt-3">
 

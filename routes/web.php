@@ -219,13 +219,46 @@ Route::post('/logout-cliente', [
 | Usuários
 |--------------------------------------------------------------------------
 */
+/*
+|--------------------------------------------------------------------------
+| Usuários
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/usuario', [
+    UsuarioController::class,
+    'index',
+])->name('usuario.list');
+
+Route::get('/usuario/create', [
+    UsuarioController::class,
+    'form',
+])->name('usuario.create');
+
+Route::post('/usuario/store', [
+    UsuarioController::class,
+    'store',
+])->name('usuario.store');
+
+Route::get('/usuario/edit/{id}', [
+    UsuarioController::class,
+    'form',
+])->name('usuario.edit');
+
+Route::put('/usuario/update/{id}', [
+    UsuarioController::class,
+    'update',
+])->name('usuario.update');
+
+Route::delete('/usuario/{id}', [
+    UsuarioController::class,
+    'destroy',
+])->name('usuario.destroy');
 
 Route::post('/usuario/search', [
     UsuarioController::class,
     'search',
 ])->name('usuario.search');
-
-Route::resource('usuario', \App\Http\Controllers\UsuarioController::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -334,3 +367,4 @@ Route::delete('/item_pedido/{id}', [ItemPedidoController::class, 'destroy'])
 
 Route::post('/item_pedido/search', [ItemPedidoController::class, 'search'])
     ->name('item_pedido.search');
+/////////////////////////////////
