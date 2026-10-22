@@ -41,6 +41,7 @@
     <form action="{{ $action }}"
         method="post"
         class="p-4"
+        enctype="multipart/form-data"
         style="background-color: #fff;
                 border: 1px solid #ddd;
                 border-radius: 6px;
@@ -628,6 +629,16 @@
             </div>
 
         </div>
+
+        <div class="col-6">
+                <label for="imagem">Imagem</label>
+                @php
+                    $nome_imagem = !empty($data->imagem) ? $data->imagem : 'sem_imagem.jpg';
+                @endphp
+                <img src="/storage/{{ $nome_imagem }}" class="rounded-circle" width="200px" height="200px"
+                    alt="Imagem" />
+                <input type="file" name="imagem" class="form-control" value="{{ old('imagem', $data->imagem ?? '') }}">
+            </div>
 
 
         {{-- BOTÕES --}}

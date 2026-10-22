@@ -42,6 +42,7 @@
 
                         <option value="nome">Nome</option>
                         <option value="cpf">CPF</option>
+                        <option value="imagem">Imagem</option>
                         <option value="email">E-mail</option>
                         <option value="telefone">Telefone</option>
                         <option value="endereco">Endereço</option>
@@ -125,6 +126,11 @@
 
                     <th scope="col"
                         style="padding: 16px;">
+                        Foto Usuário
+                    </th>
+
+                    <th scope="col"
+                        style="padding: 16px;">
                         #
                     </th>
 
@@ -178,9 +184,24 @@
             <tbody>
 
                 @foreach ($dados as $item)
+                    @php
+                        $nome_imagem = !empty($item->imagem)
+                            ? 'storage/imagem/usuario/' . $item->imagem
+                            : 'image/sem_imagem.jpg';
+                    @endphp
+
 
                     <tr style="background-color: {{ $loop->odd ? '#f4dada' : '#fff4f1' }};">
-
+                        <th scope="row"
+                            style="padding: 16px;
+                                   background-color: {{ $loop->odd ? '#f4dada' : '#fff4f1' }};"
+                        > <img src="{{ asset($nome_imagem) }}"
+                                class="rounded-circle"
+                                width="50px"
+                                height="50px"
+                                alt="Foto do Usuário">
+                            <!--imagem salvando -- rever -->
+                        </th>
                         <th scope="row"
                             style="padding: 16px;
                                    background-color: {{ $loop->odd ? '#f4dada' : '#fff4f1' }};">

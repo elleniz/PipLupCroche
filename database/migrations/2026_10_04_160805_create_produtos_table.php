@@ -24,6 +24,7 @@ return new class extends Migration
             ->constrained('categorias')
             ->nullOnDelete();
             $table->string('descricao', 200)->nullable();
+            $table->string('imagem', 150)->nullable();
             $table->string('peso', 10);
             $table->string('material', 40);
             $table->timestamps();

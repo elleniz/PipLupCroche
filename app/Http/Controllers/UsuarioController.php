@@ -59,6 +59,17 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $this->validateForm($request);
+        $nome_imagem = null;
+
+        $imagem = $request->file('imagem');
+        if ($imagem) {
+            $nome_imagem = date('YmdiHs') . "." . $imagem->getClientOriginalExtension();
+            $diretorio = "imagem/usuario/";
+            $imagem->storeAs($diretorio, $nome_imagem, 'public');
+
+            
+        }
+
 
         $usuario = Usuario::create([
             'nome' => $request->nome,
@@ -68,6 +79,7 @@ class UsuarioController extends Controller
             'endereco' => $request->endereco,
             'data_nascimento' => $request->data_nascimento,
             'tipo' => $request->tipo,
+            'imagem' => $nome_imagem, //nn tem isso no produto imagem
         ]);
 
 
@@ -140,6 +152,7 @@ class UsuarioController extends Controller
             'endereco' => $request->endereco,
             'data_nascimento' => $request->data_nascimento,
             'tipo' => $request->tipo,
+            'imagem' => $request->imagem ?? null,
         ]);
 
 
@@ -455,6 +468,9 @@ class UsuarioController extends Controller
 
             'vaga_id.required' =>
                 'Selecione uma vaga existente.',
+
+            'imagem.image' => "O :attribute deve ser enviado",
+            'imagem.mimes' => "O :attribute deve ser das extensões:PNG,JPEG,JPG",
         ];
 
 

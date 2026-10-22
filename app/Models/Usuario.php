@@ -19,6 +19,7 @@ class Usuario extends Model
         'endereco',
         'data_nascimento',
         'tipo',
+        'imagem',
     ];
 
     public function vaga()
@@ -27,9 +28,9 @@ class Usuario extends Model
     }
 
     //trabalho 2
-    public function pedidos()
+    public function vendas()
     {
-        return $this->hasMany(Pedido::class);
+        return $this->hasMany(Venda::class);
     }
 
 }

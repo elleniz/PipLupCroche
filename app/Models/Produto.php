@@ -11,12 +11,15 @@ class Produto extends Model
 
     protected $fillable = [
         'nome',
-        'preco',
+        'preco',    
         'quantidade',
         'peso',
+        'nome_imagem',
         'categoria_id',
         'descricao',
         'material',
+        'imagem',
+
     ];
 
 
@@ -24,6 +27,13 @@ class Produto extends Model
 public function categoria()
 {
     return $this->belongsTo(Categoria::class, 'categoria_id');
+}
+
+public function vendas()
+{
+    return $this->belongsToMany(Venda::class, 'item_venda', 'produto_id', 'venda_id')
+    ->withPivot('quantidade')
+    ->withTimestamps();
 }
 
 }

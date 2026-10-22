@@ -16,7 +16,7 @@
             <li class="nav-item">
                 <a class="nav-link fw-semibold"
                    style="color: #55003E; font-size: 14px;"
-                   href="<?php echo e(route('usuario.list')); ?>">
+                   href="<?php echo e(url('usuario')); ?>">
                     USUÁRIOS
                 </a>
             </li>
@@ -48,13 +48,22 @@
             <li class="nav-item">
                 <a class="nav-link fw-semibold"
                    style="color: #55003E; font-size: 14px;"
-                   href="<?php echo e(route('pedidos.list')); ?>">
+                   href="<?php echo e(url('vendas')); ?>">
                     PEDIDOS
                 </a>
             </li>
+
+            <li class="nav-item">
+    <a class="nav-link fw-semibold"
+       style="color: #55003E; font-size: 14px;"
+       href="<?php echo e(url('item_venda')); ?>">
+        ITENS DE PEDIDOS
+    </a>
+</li>
 
         </ul>
 
     </div>
 
-</nav><?php /**PATH C:\Users\Ellen\Desktop\PriplupCroche\resources\views/sidebar.blade.php ENDPATH**/ ?>
+</nav>
+<?php /**PATH C:\Users\Ellen\Desktop\PriplupCroche\resources\views/sidebar.blade.php ENDPATH**/ ?>

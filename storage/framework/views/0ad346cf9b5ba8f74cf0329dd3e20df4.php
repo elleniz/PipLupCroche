@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório de Venda</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+</head>
+
+<body style="font-family: DejaVu Sans, sans-serif; font-size: 12px; color: #333; padding: 20px;">
+
+    <div class="container">
+
+        <h1 class="text-center fw-bold"
+            style="color: #6d3f36;">
+            PipLup Crochê
+        </h1>
+
+        <h3 class="text-center mb-4">
+            <?php echo e($titulo); ?>
+
+        </h3>
+
+        <p class="text-end">
+            Data do relatório: <?php echo e($date); ?>
+
+        </p>
+
+        
+
+<p style="margin-top: 30px; margin-bottom: 30px; text-align: center;">
+
+    <span style="display: inline-block; width: 42%; margin-right: 4%; text-align: center; vertical-align: top;">
+        <span style="display: block; font-size: 13px; color: #6d3f36; margin-bottom: 8px;">
+            NÚMERO TOTAL DE PEDIDOS
+        </span>
+
+        <strong style="font-size: 32px; color: #6d3f36;">
+            <?php echo e($totalVendas); ?>
+
+        </strong>
+    </span>
+
+    <span style="display: inline-block; width: 42%; text-align: center; vertical-align: top;">
+        <span style="display: block; font-size: 13px; color: #6d3f36; margin-bottom: 8px;">
+            VALOR TOTAL ARRECADADO
+        </span>
+
+        <strong style="font-size: 28px; color: #6d3f36;">
+            R$ <?php echo e(number_format($valorArrecadado, 2, ',', '.')); ?>
+
+        </strong>
+    </span>
+
+</p>
+
+
+
+        <table class="table table-bordered"
+               style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #e7b9bd;">
+                    <th style="padding: 8px; border: 1px solid #999;">ID</th>
+                    <th style="padding: 8px; border: 1px solid #999;">Cliente</th>
+                    <th style="padding: 8px; border: 1px solid #999;">Data</th>
+                    <th style="padding: 8px; border: 1px solid #999;">Valor total</th>
+                    <th style="padding: 8px; border: 1px solid #999;">Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php $__empty_1 = true; $__currentLoopData = $dados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $venda): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #999;">
+                            <?php echo e($venda->id); ?>
+
+                        </td>
+                        <td style="padding: 8px; border: 1px solid #999;">
+                            <?php echo e($venda->usuario->nome ?? 'Não informado'); ?>
+
+                        </td>
+                        <td style="padding: 8px; border: 1px solid #999;">
+                            <?php echo e($venda->data); ?>
+
+                        </td>
+                        <td style="padding: 8px; border: 1px solid #999;">
+                            R$ <?php echo e(number_format($venda->valor_total, 2, ',', '.')); ?>
+
+                        </td>
+                        <td style="padding: 8px; border: 1px solid #999;">
+                            <?php echo e($venda->status); ?>
+
+                        </td>
+                    </tr>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                    <tr>
+                        <td colspan="5" style="padding: 8px; border: 1px solid #999;">
+                            Nenhum venda cadastrado.
+                        </td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>
+<?php /**PATH C:\Users\Ellen\Desktop\PriplupCroche\resources\views/venda/report.blade.php ENDPATH**/ ?>

@@ -48,7 +48,7 @@
             <li class="nav-item">
                 <a class="nav-link fw-semibold"
                    style="color: #55003E; font-size: 14px;"
-                   href="{{ url('pedidos') }}">
+                   href="{{ url('vendas') }}">
                     PEDIDOS
                 </a>
             </li>
@@ -56,7 +56,7 @@
             <li class="nav-item">
     <a class="nav-link fw-semibold"
        style="color: #55003E; font-size: 14px;"
-       href="{{ url('item_pedido') }}">
+       href="{{ url('item_venda') }}">
         ITENS DE PEDIDOS
     </a>
 </li>

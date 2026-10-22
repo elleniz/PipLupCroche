@@ -24,6 +24,8 @@ return new class extends Migration
 
             $table->string('endereco', 500)->nullable();
 
+            $table->string('imagem', 150)->nullable();
+
             $table->date('data_nascimento')->nullable();
 
             $table->string('tipo', 20);

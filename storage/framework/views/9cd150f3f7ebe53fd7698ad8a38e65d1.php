@@ -21,7 +21,7 @@
             <p class="mb-0"
                style="color: #a7838b;">
 
-                Gerencie os produtos, clientes e configurações da loja.
+                Gerencie os vendas, clientes e configurações da loja.
 
             </p>
         </div>
@@ -44,7 +44,7 @@
     <!-- Cards de resumo -->
     <div class="row g-4 mb-4">
 
-        <!-- Produtos -->
+        <!-- Vendas -->
         <div class="col-md-4">
 
             <div class="card border-0 shadow-sm h-100"
@@ -63,7 +63,7 @@
                             <h6 class="mb-2"
                                 style="color: #a7838b;">
 
-                                Produtos
+                                Vendas
 
                             </h6>
 
@@ -91,7 +91,7 @@
 
                     </div>
 
-                    <a href="<?php echo e(url('/produto')); ?>"
+                    <a href="<?php echo e(url('/venda')); ?>"
                        class="btn btn-sm mt-4 px-3"
                        style="
                             background-color: #e99aaa;
@@ -100,7 +100,7 @@
                        ">
 
                         <i class="fa-solid fa-arrow-right me-1"></i>
-                        Ver produtos
+                        Ver vendas
 
                     </a>
 
@@ -247,7 +247,7 @@
     </div>
 
 
-    <!-- Produtos da loja -->
+    <!-- Vendas da loja -->
     <div class="card border-0 shadow-sm mb-4"
          style="
             border-radius: 18px;
@@ -267,13 +267,13 @@
                    style="color: #e99aaa;">
                 </i>
 
-                Produtos da loja
+                Vendas da loja
 
             </h4>
 
             <small style="color: #a7838b;">
 
-                Visualização dos produtos e imagens cadastradas.
+                Visualização dos vendas e imagens cadastradas.
 
             </small>
 
@@ -284,7 +284,7 @@
 
             <div class="row g-4">
 
-                <!-- Produto 1 -->
+                <!-- Venda 1 -->
                 <div class="col-md-6 col-lg-3">
 
                     <div class="card h-100 border-0 shadow-sm"
@@ -296,7 +296,7 @@
 
                         <img src="<?php echo e(asset('image/imagem_1.jpg')); ?>"
                              class="card-img-top"
-                             alt="Produto PipLup Crochê"
+                             alt="Venda PipLup Crochê"
                              style="
                                 height: 220px;
                                 object-fit: cover;
@@ -307,18 +307,18 @@
                             <h5 class="fw-bold"
                                 style="color: #76545c;">
 
-                                Produto em destaque
+                                Venda em destaque
 
                             </h5>
 
                             <p class="mb-3"
                                style="color: #a7838b;">
 
-                                Produto da loja
+                                Venda da loja
 
                             </p>
 
-                            <a href="<?php echo e(url('/produto')); ?>"
+                            <a href="<?php echo e(url('/venda')); ?>"
                                class="btn btn-sm w-100"
                                style="
                                     background-color: #e99aaa;
@@ -326,7 +326,7 @@
                                     border-radius: 10px;
                                ">
 
-                                Gerenciar produto
+                                Gerenciar venda
 
                             </a>
 
@@ -337,7 +337,7 @@
                 </div>
 
 
-                <!-- Produto 2 -->
+                <!-- Venda 2 -->
                 <div class="col-md-6 col-lg-3">
 
                     <div class="card h-100 border-0 shadow-sm"
@@ -349,7 +349,7 @@
 
                         <img src="<?php echo e(asset('image/header1.png')); ?>"
                              class="card-img-top"
-                             alt="Produto PipLup Crochê"
+                             alt="Venda PipLup Crochê"
                              style="
                                 height: 220px;
                                 object-fit: cover;
@@ -367,11 +367,11 @@
                             <p class="mb-3"
                                style="color: #a7838b;">
 
-                                Produto da loja
+                                Venda da loja
 
                             </p>
 
-                            <a href="<?php echo e(url('/produto')); ?>"
+                            <a href="<?php echo e(url('/venda')); ?>"
                                class="btn btn-sm w-100"
                                style="
                                     background-color: #e99aaa;
@@ -379,7 +379,7 @@
                                     border-radius: 10px;
                                ">
 
-                                Gerenciar produto
+                                Gerenciar venda
 
                             </a>
 
@@ -390,7 +390,7 @@
                 </div>
 
 
-                <!-- Produto 3 -->
+                <!-- Venda 3 -->
                 <div class="col-md-6 col-lg-3">
 
                     <div class="card h-100 border-0 shadow-sm"
@@ -402,7 +402,7 @@
 
                         <img src="<?php echo e(asset('image/imagem_2.jpg')); ?>"
                              class="card-img-top"
-                             alt="Produto PipLup Crochê"
+                             alt="Venda PipLup Crochê"
                              style="
                                 height: 220px;
                                 object-fit: cover;
@@ -420,11 +420,11 @@
                             <p class="mb-3"
                                style="color: #a7838b;">
 
-                                Produto da loja
+                                Venda da loja
 
                             </p>
 
-                            <a href="<?php echo e(url('/produto')); ?>"
+                            <a href="<?php echo e(url('/venda')); ?>"
                                class="btn btn-sm w-100"
                                style="
                                     background-color: #e99aaa;
@@ -432,7 +432,7 @@
                                     border-radius: 10px;
                                ">
 
-                                Gerenciar produto
+                                Gerenciar venda
 
                             </a>
 
@@ -443,7 +443,7 @@
                 </div>
 
 
-                <!-- Produto 4 -->
+                <!-- Venda 4 -->
                 <div class="col-md-6 col-lg-3">
 
                     <div class="card h-100 border-0 shadow-sm"
@@ -455,7 +455,7 @@
 
                         <img src="<?php echo e(asset('image/imagem_3.jpg')); ?>"
                              class="card-img-top"
-                             alt="Produto PipLup Crochê"
+                             alt="Venda PipLup Crochê"
                              style="
                                 height: 220px;
                                 object-fit: cover;
@@ -473,11 +473,11 @@
                             <p class="mb-3"
                                style="color: #a7838b;">
 
-                                Produto da loja
+                                Venda da loja
 
                             </p>
 
-                            <a href="<?php echo e(url('/produto')); ?>"
+                            <a href="<?php echo e(url('/venda')); ?>"
                                class="btn btn-sm w-100"
                                style="
                                     background-color: #e99aaa;
@@ -485,7 +485,7 @@
                                     border-radius: 10px;
                                ">
 
-                                Gerenciar produto
+                                Gerenciar venda
 
                             </a>
 
