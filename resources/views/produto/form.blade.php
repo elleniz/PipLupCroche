@@ -37,6 +37,7 @@
 <form action="{{ $action }}"
       method="post"
       class="p-4"
+    enctype="multipart/form-data"
       style="background-color: #fff;
              border: 1px solid #ddd;
              border-radius: 6px;
@@ -208,8 +209,9 @@
                        font-size: 13px;
                        height: 40px;
                        padding: 7px 12px;">
-
+<p>Material salvo: {{ $data->material ?? 'NÃO ENCONTRADO' }}</p>
             <option value="">Selecione o material</option>
+
 
             <option value="ALGODAO"
                 {{ old('material', $data->material ?? '') == 'ALGODAO' ? 'selected' : '' }}>

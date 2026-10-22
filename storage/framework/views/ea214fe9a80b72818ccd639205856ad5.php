@@ -48,7 +48,7 @@
             <li class="nav-item">
                 <a class="nav-link fw-semibold"
                    style="color: #55003E; font-size: 14px;"
-                   href="<?php echo e(url('pedidos')); ?>">
+                   href="<?php echo e(url('vendas')); ?>">
                     PEDIDOS
                 </a>
             </li>
@@ -56,7 +56,7 @@
             <li class="nav-item">
     <a class="nav-link fw-semibold"
        style="color: #55003E; font-size: 14px;"
-       href="<?php echo e(url('item_pedido')); ?>">
+       href="<?php echo e(url('item_venda')); ?>">
         ITENS DE PEDIDOS
     </a>
 </li>

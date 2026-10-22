@@ -2,19 +2,19 @@
 
 namespace Database\Factories;
 
-use App\Models\ItemPedido;
-use App\Models\Pedido;
+use App\Models\ItemVenda;
+use App\Models\Venda;
 use App\Models\Produto;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ItemPedidoFactory extends Factory
+class ItemVendaFactory extends Factory
 {
-    protected $model = ItemPedido::class;
+    protected $model = ItemVenda::class;
 
     public function definition(): array
     {
         return [
-            'pedido_id' => Pedido::factory(),
+            'venda_id' => Venda::factory(),
             'produto_id' => Produto::factory(),
             'quantidade' => fake()->numberBetween(1, 20),
         ];

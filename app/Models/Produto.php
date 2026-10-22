@@ -14,6 +14,7 @@ class Produto extends Model
         'preco',    
         'quantidade',
         'peso',
+        'nome_imagem',
         'categoria_id',
         'descricao',
         'material',
@@ -26,6 +27,13 @@ class Produto extends Model
 public function categoria()
 {
     return $this->belongsTo(Categoria::class, 'categoria_id');
+}
+
+public function vendas()
+{
+    return $this->belongsToMany(Venda::class, 'item_venda', 'produto_id', 'venda_id')
+    ->withPivot('quantidade')
+    ->withTimestamps();
 }
 
 }

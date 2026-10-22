@@ -107,12 +107,9 @@ class ProdutoFactory extends Factory
                 'ALGODÃO',
                 'ALGODÃO RECICLADO',
                 'BARBANTE',
-                'BARBANTE PREMIUM',
                 'FIO DE MALHA',
-                'FIO DE MALHA RECICLADO',
                 'LÃ NATURAL',
-                'LÃ ACRÍLICA',
-                'MISTURA DE ALGODÃO E POLIÉSTER',
+                'VISCOSE',
             ]),
         ];
     }

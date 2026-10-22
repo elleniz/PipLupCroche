@@ -9,7 +9,7 @@ class UsuarioSeeder extends Seeder
 {
     public function run(): void
     {
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 10; $i++) {
 
             Usuario::factory()->create([
                 'tipo' => fake()->randomElement([

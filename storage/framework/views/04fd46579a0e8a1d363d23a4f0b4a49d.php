@@ -42,7 +42,7 @@
 
                         <option value="nome">Nome</option>
                         <option value="cpf">CPF</option>
-                        <option value="cpf">Imagem</option>
+                        <option value="imagem">Imagem</option>
                         <option value="email">E-mail</option>
                         <option value="telefone">Telefone</option>
                         <option value="endereco">Endereço</option>

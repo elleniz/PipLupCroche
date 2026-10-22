@@ -12,10 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pedidos', function (Blueprint $table) {
+        Schema::create('vendas', function (Blueprint $table) {
             $table->id();
-            //chave estrangeira + pega o id do usuario que fez o pedido + nao da pra excluir usuario
-            //que tem pedido
+            //chave estrangeira + pega o id do usuario que fez o venda + nao da pra excluir usuario
+            //que tem venda
             $table->foreignId('usuario_id') 
               ->constrained('usuarios')
               ->restrictOnDelete();
@@ -40,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('vendas');
     }
 };

@@ -1,0 +1,189 @@
+@extends('main')
+
+@section('titulo', 'Formulário de Itens de Venda')
+
+@section('conteudo')
+
+<div class="container-fluid"
+     style="background-color: #fffaf6;
+            min-height: 100%;
+            padding: 35px 40px;">
+
+@php
+    $action = !empty($data->id)
+        ? route('item_venda.update', $data->id)
+        : route('item_venda.store');
+@endphp
+
+<div style="text-align: center; margin-bottom: 20px;">
+
+    <h4 style="color: #6d3f36;
+               font-family: Georgia, serif;
+               font-weight: bold;
+               margin-bottom: 8px;">
+        CADASTRAR ITEM DE PEDIDO
+    </h4>
+
+    <p style="color: #555;
+              font-size: 13px;
+              margin-bottom: 0;">
+        Vincule um produto a um venda e informe a quantidade
+    </p>
+
+</div>
+
+<form action="{{ $action }}"
+      method="post"
+      class="p-4"
+      style="background-color: #fff;
+             border: 1px solid #ddd;
+             border-radius: 6px;
+             box-shadow: 0 2px 5px rgba(0,0,0,0.12);
+             max-width: 650px;
+             width: 100%;
+             margin: 0 auto;">
+
+    @csrf
+
+    @if (!empty($data->id))
+        @method('PUT')
+    @endif
+
+    <input type="hidden"
+           name="id"
+           value="{{ old('id', $data->id ?? '') }}">
+
+    {{-- PEDIDO --}}
+    <div class="mb-3">
+
+        <label for="venda_id"
+               class="form-label"
+               style="color: #555;
+                      font-size: 13px;
+                      font-weight: 500;">
+            Venda
+        </label>
+
+        <select name="venda_id"
+                id="venda_id"
+                class="form-select"
+                required
+                style="border: 1px solid #ccc;
+                       border-radius: 5px;
+                       font-size: 13px;
+                       height: 40px;
+                       padding: 7px 12px;">
+
+            <option value="">Selecione um venda</option>
+
+            @foreach($vendas as $venda)
+
+                <option value="{{ $venda->id }}"
+                    {{ old('venda_id', $data->venda_id ?? '') == $venda->id ? 'selected' : '' }}>
+
+                    Venda #{{ $venda->id }}
+
+                </option>
+
+            @endforeach
+
+        </select>
+
+    </div>
+
+    {{-- PRODUTO --}}
+    <div class="mb-3">
+
+        <label for="produto_id"
+               class="form-label"
+               style="color: #555;
+                      font-size: 13px;
+                      font-weight: 500;">
+            Produto
+        </label>
+
+        <select name="produto_id"
+                id="produto_id"
+                class="form-select"
+                required
+                style="border: 1px solid #ccc;
+                       border-radius: 5px;
+                       font-size: 13px;
+                       height: 40px;
+                       padding: 7px 12px;">
+
+            <option value="">Selecione um produto</option>
+
+            @foreach($produtos as $produto)
+
+                <option value="{{ $produto->id }}"
+                    {{ old('produto_id', $data->produto_id ?? '') == $produto->id ? 'selected' : '' }}>
+
+                    {{ $produto->nome }}
+
+                </option>
+
+            @endforeach
+
+        </select>
+
+    </div>
+
+    {{-- QUANTIDADE --}}
+    <div class="mb-3">
+
+        <label for="quantidade"
+               class="form-label"
+               style="color: #555;
+                      font-size: 13px;
+                      font-weight: 500;">
+            Quantidade
+        </label>
+
+        <input type="number"
+               name="quantidade"
+               id="quantidade"
+               min="1"
+               required
+               class="form-control"
+               style="border: 1px solid #ccc;
+                      border-radius: 5px;
+                      font-size: 13px;
+                      height: 40px;
+                      padding: 7px 12px;"
+               value="{{ old('quantidade', $data->quantidade ?? 1) }}">
+
+    </div>
+
+    {{-- BOTÕES --}}
+    <div class="d-flex justify-content-between mt-3">
+
+        <button type="submit"
+                class="btn"
+                style="background-color: #e88da5;
+                       border: none;
+                       border-radius: 20px;
+                       color: white;
+                       padding: 8px 30px;
+                       font-size: 13px;">
+            Salvar
+        </button>
+
+        <a href="{{ url('item_venda') }}"
+           class="btn"
+           style="background-color: #c90045;
+                  border: none;
+                  border-radius: 20px;
+                  color: white;
+                  padding: 8px 30px;
+                  font-size: 13px;">
+            Voltar
+        </a>
+
+    </div>
+
+</form>
+
+</div>
+
+@stop

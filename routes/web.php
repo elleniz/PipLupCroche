@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -8,14 +9,12 @@ use App\Http\Controllers\ClienteLoginController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\VagaController;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\PedidoController;
-use App\Http\Controllers\ItemPedidoController;
+use App\Http\Controllers\VendaController;
+use App\Http\Controllers\ItemVendaController;
 
-/*
-|--------------------------------------------------------------------------
-| Autenticação
-|--------------------------------------------------------------------------
-*/
+// --------------------------------------------------
+// Autenticação
+// --------------------------------------------------
 
 Route::get('/login', [LoginController::class, 'showLogin'])
     ->name('login');
@@ -26,11 +25,10 @@ Route::post('/login', [LoginController::class, 'login'])
 Route::post('/logout', [LoginController::class, 'logout'])
     ->name('logout');
 
-/*
-|--------------------------------------------------------------------------
-| Página inicial do cliente
-|--------------------------------------------------------------------------
-*/
+
+// --------------------------------------------------
+// Página inicial
+// --------------------------------------------------
 
 Route::get('/inicio', function () {
     if (session('usuario_logado')) {
@@ -48,11 +46,9 @@ Route::get('/', [ClienteLoginController::class, 'produtos'])
     ->name('cliente.home');
 
 
-/*
-|--------------------------------------------------------------------------
-| Área administrativa
-|--------------------------------------------------------------------------
-*/
+// --------------------------------------------------
+// Área administrativa
+// --------------------------------------------------
 
 Route::get('/admin', function () {
     if (!session('usuario_logado')) {
@@ -62,15 +58,16 @@ Route::get('/admin', function () {
     return view('admin.dashboard');
 })->name('home');
 
-/*
-|--------------------------------------------------------------------------
-| Produtos
-|--------------------------------------------------------------------------
-*/
 
-Route::get('/produto', [ProdutoController::class, 'index']);
+// --------------------------------------------------
+// Produtos
+// --------------------------------------------------
 
-Route::get('/produto/create', [ProdutoController::class, 'create']);
+Route::get('/produto', [ProdutoController::class, 'index'])
+    ->name('produto.list');
+
+Route::get('/produto/create', [ProdutoController::class, 'create'])
+    ->name('produto.create');
 
 Route::post('/produto/store', [ProdutoController::class, 'store'])
     ->name('produto.store');
@@ -88,283 +85,179 @@ Route::post('/produto/search', [ProdutoController::class, 'search'])
     ->name('produto.search');
 
 
-/*
-|--------------------------------------------------------------------------
-| Funcionários
-|--------------------------------------------------------------------------
-*/
-Route::get('/funcionarios', [
-    VagaController::class,
-    'list',
-])->name('vaga.list');
+// --------------------------------------------------
+// Funcionários
+// --------------------------------------------------
 
-Route::get('/funcionarios/create', [
-    VagaController::class,
-    'form',
-])->name('funcionarios.create');
+Route::get('/funcionarios', [VagaController::class, 'list'])
+    ->name('funcionarios.list');
 
-Route::post('/funcionarios/store', [
-    VagaController::class,
-    'store',
-])->name('funcionarios.store');
+Route::get('/funcionarios/create', [VagaController::class, 'form'])
+    ->name('funcionarios.create');
 
-Route::get('/funcionarios/edit/{id}', [
-    VagaController::class,
-    'form',
-])->name('funcionarios.edit');
+Route::post('/funcionarios/store', [VagaController::class, 'store'])
+    ->name('funcionarios.store');
 
-Route::put('/funcionarios/update/{id}', [
-    VagaController::class,
-    'update',
-])->name('funcionarios.update');
+Route::get('/funcionarios/edit/{id}', [VagaController::class, 'form'])
+    ->name('funcionarios.edit');
 
-Route::delete('/funcionarios/{id}', [
-    VagaController::class,
-    'destroy',
-])->name('funcionarios.destroy');
+Route::put('/funcionarios/update/{id}', [VagaController::class, 'update'])
+    ->name('funcionarios.update');
 
-Route::post('/funcionarios/search', [
-    VagaController::class,
-    'search',
-])->name('funcionarios.search');
+Route::delete('/funcionarios/{id}', [VagaController::class, 'destroy'])
+    ->name('funcionarios.destroy');
 
-/*
-|--------------------------------------------------------------------------
-| PEDIDOS
-|--------------------------------------------------------------------------
-*/
+Route::post('/funcionarios/search', [VagaController::class, 'search'])
+    ->name('funcionarios.search');
 
 
-Route::get('/pedidos', [PedidoController::class, 'index'])
-    ->name('pedidos.index');
+// --------------------------------------------------
+// Vagas
+// --------------------------------------------------
 
-Route::get('/pedidos/create', [PedidoController::class, 'create'])
-    ->name('pedidos.create');
+Route::get('/vaga', [VagaController::class, 'list'])
+    ->name('vaga.list');
 
-Route::post('/pedidos', [PedidoController::class, 'store'])
-    ->name('pedidos.store');
+Route::get('/vaga/create', [VagaController::class, 'form'])
+    ->name('vaga.create');
 
-Route::post('/pedidos/search', [PedidoController::class, 'search'])
-    ->name('pedidos.search');
+Route::post('/vaga/store', [VagaController::class, 'store'])
+    ->name('vaga.store');
 
-Route::get('/pedidos/{pedido}/edit', [PedidoController::class, 'edit'])
-    ->name('pedidos.edit');
+Route::get('/vaga/edit/{id}', [VagaController::class, 'form'])
+    ->name('vaga.edit');
 
-Route::put('/pedidos/{pedido}', [PedidoController::class, 'update'])
-    ->name('pedidos.update');
+Route::put('/vaga/update/{id}', [VagaController::class, 'update'])
+    ->name('vaga.update');
 
-Route::delete('/pedidos/{pedido}', [PedidoController::class, 'destroy'])
-    ->name('pedidos.destroy');
+Route::delete('/vaga/{id}', [VagaController::class, 'destroy'])
+    ->name('vaga.destroy');
 
-
-/*
-|--------------------------------------------------------------------------
-| Vagas
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/vaga', [
-    VagaController::class,
-    'list',
-])->name('vaga.list');
-
-Route::get('/vaga/create', [
-    VagaController::class,
-    'form',
-])->name('vaga.create');
-
-Route::post('/vaga/store', [
-    VagaController::class,
-    'store',
-])->name('vaga.store');
-
-Route::get('/vaga/edit/{id}', [
-    VagaController::class,
-    'form',
-])->name('vaga.edit');
-
-Route::put('/vaga/update/{id}', [
-    VagaController::class,
-    'update',
-])->name('vaga.update');
-
-Route::delete('/vaga/{id}', [
-    VagaController::class,
-    'destroy',
-])->name('vaga.destroy');
-
-Route::post('/vaga/search', [
-    VagaController::class,
-    'search',
-])->name('vaga.search');
+Route::post('/vaga/search', [VagaController::class, 'search'])
+    ->name('vaga.search');
 
 
-/*
-|--------------------------------------------------------------------------
-| Área do cliente
-|--------------------------------------------------------------------------
-*/
+// --------------------------------------------------
+// Usuários
+// --------------------------------------------------
 
-Route::get('/cliente-inicio', [
-    ClienteLoginController::class,
-    'inicio',
-])->name('cliente.inicio');
+Route::get('/usuario', [UsuarioController::class, 'index'])
+    ->name('usuario.list');
 
-Route::post('/logout-cliente', [
-    ClienteLoginController::class,
-    'logout',
-])->name('cliente.logout');
-/*
-|--------------------------------------------------------------------------
-| Usuários
-|--------------------------------------------------------------------------
-*/
-/*
-|--------------------------------------------------------------------------
-| Usuários
-|--------------------------------------------------------------------------
-*/
+Route::get('/usuario/create', [UsuarioController::class, 'form'])
+    ->name('usuario.create');
 
-Route::get('/usuario', [
-    UsuarioController::class,
-    'index',
-])->name('usuario.list');
+Route::post('/usuario/store', [UsuarioController::class, 'store'])
+    ->name('usuario.store');
 
-Route::get('/usuario/create', [
-    UsuarioController::class,
-    'form',
-])->name('usuario.create');
+Route::get('/usuario/edit/{id}', [UsuarioController::class, 'form'])
+    ->name('usuario.edit');
 
-Route::post('/usuario/store', [
-    UsuarioController::class,
-    'store',
-])->name('usuario.store');
+Route::put('/usuario/update/{id}', [UsuarioController::class, 'update'])
+    ->name('usuario.update');
 
-Route::get('/usuario/edit/{id}', [
-    UsuarioController::class,
-    'form',
-])->name('usuario.edit');
+Route::delete('/usuario/{id}', [UsuarioController::class, 'destroy'])
+    ->name('usuario.destroy');
 
-Route::put('/usuario/update/{id}', [
-    UsuarioController::class,
-    'update',
-])->name('usuario.update');
-
-Route::delete('/usuario/{id}', [
-    UsuarioController::class,
-    'destroy',
-])->name('usuario.destroy');
-
-Route::post('/usuario/search', [
-    UsuarioController::class,
-    'search',
-])->name('usuario.search');
-
-/*
-|--------------------------------------------------------------------------
-| Vagas
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/vaga', [
-    VagaController::class,
-    'list',
-])->name('vaga.list');
-
-Route::get('/vaga/create', [
-    VagaController::class,
-    'form',
-])->name('vaga.create');
-
-Route::post('/vaga/store', [
-    VagaController::class,
-    'store',
-])->name('vaga.store');
-
-Route::get('/vaga/edit/{id}', [
-    VagaController::class,
-    'form',
-])->name('vaga.edit');
-
-Route::put('/vaga/update/{id}', [
-    VagaController::class,
-    'update',
-])->name('vaga.update');
-
-Route::delete('/vaga/{id}', [
-    VagaController::class,
-    'destroy',
-])->name('vaga.destroy');
-
-Route::post('/vaga/search', [
-    VagaController::class,
-    'search',
-])->name('vaga.search');
+Route::post('/usuario/search', [UsuarioController::class, 'search'])
+    ->name('usuario.search');
 
 
-//////////////////////////
-Route::get('/categoria', [
-    CategoriaController::class,
-    'list',
-])->name('categoria.list');
+// --------------------------------------------------
+// Categorias
+// --------------------------------------------------
 
-Route::get('/categoria/create', [
-    CategoriaController::class,
-    'form',
-])->name('categoria.create');
+Route::get('/categoria', [CategoriaController::class, 'list'])
+    ->name('categoria.list');
 
-Route::post('/categoria/store', [
-    CategoriaController::class,
-    'store',
-])->name('categoria.store');
+Route::get('/categoria/create', [CategoriaController::class, 'form'])
+    ->name('categoria.create');
 
-Route::get('/categoria/edit/{id}', [
-    CategoriaController::class,
-    'form',
-])->name('categoria.edit');
+Route::post('/categoria/store', [CategoriaController::class, 'store'])
+    ->name('categoria.store');
 
-Route::put('/categoria/update/{id}', [
-    CategoriaController::class,
-    'update',
-])->name('categoria.update');
+Route::get('/categoria/edit/{id}', [CategoriaController::class, 'form'])
+    ->name('categoria.edit');
 
-Route::delete('/categoria/{id}', [
-    CategoriaController::class,
-    'destroy',
-])->name('categoria.destroy');
+Route::put('/categoria/update/{id}', [CategoriaController::class, 'update'])
+    ->name('categoria.update');
 
-Route::post('/categoria/search', [
-    CategoriaController::class,
-    'search',
-])->name('categoria.search');
+Route::delete('/categoria/{id}', [CategoriaController::class, 'destroy'])
+    ->name('categoria.destroy');
+
+Route::post('/categoria/search', [CategoriaController::class, 'search'])
+    ->name('categoria.search');
 
 
+// --------------------------------------------------
+// Vendas
+// --------------------------------------------------
 
-/*
-|--------------------------------------------------------------------------
-| Item pedido
-|--------------------------------------------------------------------------
-*/
+Route::get('/vendas', [VendaController::class, 'index'])
+    ->name('vendas.index');
+
+Route::get('/vendas/create', [VendaController::class, 'create'])
+    ->name('vendas.create');
+
+Route::post('/vendas', [VendaController::class, 'store'])
+    ->name('vendas.store');
+
+Route::post('/vendas/search', [VendaController::class, 'search'])
+    ->name('vendas.search');
+
+Route::get('/vendas/{venda}/edit', [VendaController::class, 'edit'])
+    ->name('vendas.edit');
+
+Route::put('/vendas/{venda}', [VendaController::class, 'update'])
+    ->name('vendas.update');
+
+Route::delete('/vendas/{venda}', [VendaController::class, 'destroy'])
+    ->name('vendas.destroy');
 
 
-Route::get('/item_pedido', [ItemPedidoController::class, 'index'])
-    ->name('item_pedido.index');
+Route::get('/vendas/relatorio', [
+    VendaController::class,
+    'report'
+])->name('vendas.report');
 
-Route::get('/item_pedido/create', [ItemPedidoController::class, 'create'])
-    ->name('item_pedido.create');
+Route::get(
+    '/vendas/produtosMaisVendidosChart',
+    [VendaController::class, 'chartProdutosMaisVendidos']
+)->name('vendas.produtosMaisVendidosChart');
+// --------------------------------------------------
+// Itens do venda
+// --------------------------------------------------
 
-Route::post('/item_pedido', [ItemPedidoController::class, 'store'])
-    ->name('item_pedido.store');
+Route::get('/item_venda', [ItemVendaController::class, 'index'])
+    ->name('item_venda.list');
 
-Route::get('/item_pedido/{id}/edit', [ItemPedidoController::class, 'edit'])
-    ->name('item_pedido.edit');
+Route::get('/item_venda/create', [ItemVendaController::class, 'create'])
+    ->name('item_venda.create');
 
-Route::put('/item_pedido/{id}', [ItemPedidoController::class, 'update'])
-    ->name('item_pedido.update');
+Route::post('/item_venda', [ItemVendaController::class, 'store'])
+    ->name('item_venda.store');
 
-Route::delete('/item_pedido/{id}', [ItemPedidoController::class, 'destroy'])
-    ->name('item_pedido.destroy');
+Route::post('/item_venda/search', [ItemVendaController::class, 'search'])
+    ->name('item_venda.search');
 
-Route::post('/item_pedido/search', [ItemPedidoController::class, 'search'])
-    ->name('item_pedido.search');
-/////////////////////////////////
+Route::get('/item_venda/{id}/edit', [ItemVendaController::class, 'edit'])
+    ->name('item_venda.edit');
+
+Route::put('/item_venda/{id}', [ItemVendaController::class, 'update'])
+    ->name('item_venda.update');
+
+Route::delete('/item_venda/{id}', [ItemVendaController::class, 'destroy'])
+    ->name('item_venda.destroy');
+
+
+// --------------------------------------------------
+// Área do cliente
+// --------------------------------------------------
+
+Route::get('/cliente-inicio', [ClienteLoginController::class, 'inicio'])
+    ->name('cliente.inicio');
+
+Route::post('/logout-cliente', [ClienteLoginController::class, 'logout'])
+    ->name('cliente.logout');
+
+    //reatorio
