@@ -10,11 +10,11 @@ class ProdutosMaisVendidosChart
     public function build(): \ArielMejiaDev\LarapexCharts\PieChart
     {
 
-            $produtosMaisVendidos = DB::table('item_pedido')
-            ->join('produtos', 'produtos.id', '=', 'item_pedido.produto_id')
+            $produtosMaisVendidos = DB::table('item_venda')
+            ->join('produtos', 'produtos.id', '=', 'item_venda.produto_id')
             ->select(
                 'produtos.nome',
-                DB::raw('SUM(item_pedido.quantidade) as total_vendido')
+                DB::raw('SUM(item_venda.quantidade) as total_vendido')
             )
             ->groupBy('produtos.id', 'produtos.nome')
             ->orderBy('total_vendido', 'desc')

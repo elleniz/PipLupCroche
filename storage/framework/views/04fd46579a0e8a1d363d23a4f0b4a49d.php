@@ -6,6 +6,25 @@
 
 <div style="background-color: #fffaf6; min-height: 100vh; padding-bottom: 40px;">
 
+
+    <div style="padding: 15px 40px 0 40px;">
+
+        <?php if(session('erro')): ?>
+            <div class="alert alert-danger">
+                <?php echo e(session('erro')); ?>
+
+            </div>
+        <?php endif; ?>
+
+        <?php if(session('success')): ?>
+            <div class="alert alert-success">
+                <?php echo e(session('success')); ?>
+
+            </div>
+        <?php endif; ?>
+
+    </div>
+
     <div class="row"
          style="background-color: #fffaf6; padding: 30px 40px;">
 

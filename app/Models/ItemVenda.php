@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Venda;
+use App\Models\Produto;
 
 class ItemVenda extends Model
 {
@@ -24,7 +26,7 @@ class ItemVenda extends Model
             'quantidade' => 'integer',
         ];
     }
-
+//1:n
     public function venda(): BelongsTo
     {
         return $this->belongsTo(Venda::class);
@@ -34,4 +36,5 @@ class ItemVenda extends Model
     {
         return $this->belongsTo(Produto::class);
     }
+
 }

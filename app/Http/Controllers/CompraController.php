@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use App\Models\Material;
 use App\Models\Compra;
+use App\Charts\ValorGastoComprasChart;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class CompraController extends Controller
@@ -63,7 +64,7 @@ class CompraController extends Controller
     {
         $this->validateForm($request);
 
-        DB::transaction(function () use ($request) {
+        DB::transaction(function () use ($request) { //db p nn dar ruim em 1 só, cancela tudo
             $compra = Compra::create([
                 'fornecedor' => $request->fornecedor,
                 'data_compra' => $request->data_compra,
@@ -84,7 +85,7 @@ class CompraController extends Controller
                 $total += $material->valor_unitario * $quantidade;
             }
 
-            $compra->materiais()->attach($itens);
+            $compra->materiais()->attach($itens); //attach - salva no item compra 
 
             $compra->update([
                 'valor_total' => $total,
@@ -115,7 +116,7 @@ class CompraController extends Controller
                 'data_compra' => $request->data_compra,
             ]);
 
-            $total = 0;
+            $total = 0; //o valor começa com 0 ne
             $itens = [];
 
             foreach ($request->materiais as $indice => $materialId) {
@@ -129,7 +130,7 @@ class CompraController extends Controller
                 $total += $material->valor_unitario * $quantidade;
             }
 
-            $compra->materiais()->sync($itens);
+            $compra->materiais()->sync($itens); //remove os q n tao relecionados, é de relacao
 
             $compra->update([
                 'valor_total' => $total,
@@ -144,7 +145,7 @@ class CompraController extends Controller
     {
         $compra = Compra::findOrFail($id);
 
-        $compra->materiais()->detach();
+        $compra->materiais()->detach();//lembrar do detach para nao exluir oq ta relacionado
 
         $compra->delete();
 
@@ -161,7 +162,7 @@ class CompraController extends Controller
                 'data_compra',
             ];
 
-            if (in_array($request->tipo, $camposPermitidos)) {
+            if (in_array($request->tipo, $camposPermitidos)) { //p ver se os campos sao iguais os d cima
                 $dados = Compra::with('materiais')
                     ->where(
                         $request->tipo,
@@ -179,6 +180,7 @@ class CompraController extends Controller
         return view('compra.list', compact('dados'));
     }
 
+    //FAZER VIEW DO RELATORIO!!!!!!!!!!!!!!!!!  
     public function report()
     {
         $compras = Compra::with('materiais')
@@ -189,12 +191,29 @@ class CompraController extends Controller
             'titulo' => 'Relatório de Listagem de Compras',
             'date' => date('d/m/Y'),
             'dados' => $compras,
-            'totalCompras' => $compras->count(),
-            'valorGasto' => $compras->sum('valor_total'),
+            'totalVendas' => $compras->count(),
+            'valorArrecadado' => $compras->sum('valor_total'),
         ];
 
         $pdf = Pdf::loadView('compra.report', $data);
 
         return $pdf->download('relatorio_compras.pdf');
+    }
+
+    
+    public function chartProdutosMaisVendidos(
+        ProdutosMaisVendidosChart $chart
+    ) {
+        return view('compra.produtosMaisVendidosCHart', [
+            'chart' => $chart->build(),
+        ]);
+    }
+
+    public function ValorGastoComprasChart(
+        ValorGastoComprasChart $chart
+    ) {
+        return view('compra.valorGastoComprasChart', [
+            'chart' => $chart->build(),
+        ]);
     }
 }

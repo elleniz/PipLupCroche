@@ -49,7 +49,6 @@
                value="{{ old('id', $data->id ?? '') }}">
 
 
-        {{-- MENSAGENS DE ERRO --}}
 
         @if ($errors->any())
 
@@ -65,9 +64,6 @@
             </div>
 
         @endif
-
-
-        {{-- NOME --}}
 
         <div class="mb-3">
 
@@ -93,7 +89,6 @@
         </div>
 
 
-        {{-- DESCRIÇÃO --}}
 
         <div class="mb-3">
 
@@ -119,7 +114,6 @@
         </div>
 
 
-        {{-- TIPO --}}
 
         <label for="tipo"
             class="form-label"
@@ -185,9 +179,6 @@
                     {{ $message }}
                 </div>
             @enderror
-
-
-        {{-- BOTÕES --}}
 
         <div class="d-flex justify-content-between mt-3">
 

@@ -188,7 +188,6 @@
                         {{ $item->turno }}
                     </td>
 
-                    {{-- FUNCIONÁRIO DA VAGA --}}
                     <td style="padding: 16px;
                                background-color: {{ $loop->odd ? '#f4dada' : '#fff4f1' }};">
 

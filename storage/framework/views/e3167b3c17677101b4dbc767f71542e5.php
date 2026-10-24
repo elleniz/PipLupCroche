@@ -51,7 +51,6 @@
            name="id"
            value="<?php echo e(old('id', $data->id ?? '')); ?>">
 
-    
     <div class="mb-3">
 
         <label for="venda_id"
@@ -90,7 +89,6 @@
 
     </div>
 
-    
     <div class="mb-3">
 
         <label for="produto_id"
@@ -129,7 +127,6 @@
 
     </div>
 
-    
     <div class="mb-3">
 
         <label for="quantidade"
@@ -155,7 +152,6 @@
 
     </div>
 
-    
     <div class="d-flex justify-content-between mt-3">
 
         <button type="submit"

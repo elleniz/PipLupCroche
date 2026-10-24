@@ -29,6 +29,7 @@ public function categoria()
     return $this->belongsTo(Categoria::class, 'categoria_id');
 }
 
+//1:n
 public function vendas()
 {
     return $this->belongsToMany(Venda::class, 'item_venda', 'produto_id', 'venda_id')
