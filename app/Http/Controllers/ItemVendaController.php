@@ -70,25 +70,22 @@ public function index()
     ));
 }
 
-  public function update(Request $request, $id)
-{
-    $request->validate([
-        'venda_id' => ['required', 'exists:vendas,id'],
-        'produto_id' => ['required', 'exists:produtos,id'],
-        'quantidade' => ['required', 'integer', 'min:1'],
-    ]);
+    public function update(
+        Request $request,
+        ItemVenda $itemVenda
+    ): RedirectResponse {
+        $dados = $request->validate([
+            'venda_id' => ['required', 'integer', 'exists:vendas,id'],
+            'produto_id' => ['required', 'integer', 'exists:produtos,id'],
+            'quantidade' => ['required', 'integer', 'min:1'],
+        ]);
 
-    $itemVenda = ItemVenda::findOrFail($id);
+        $itemVenda->update($dados);
 
-    $itemVenda->update([
-        'venda_id' => $request->venda_id,
-        'produto_id' => $request->produto_id,
-        'quantidade' => $request->quantidade,
-    ]);
-
-    return redirect('item_venda')
-        ->with('success', 'Item da venda atualizado com sucesso!');
-}
+        return redirect()
+            ->route('item_venda.list')
+            ->with('success', 'Item do venda atualizado com sucesso!');
+    }
 
  public function destroy($id)
 {

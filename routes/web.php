@@ -10,7 +10,11 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\VagaController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\VendaController;
-use App\Http\Controllers\ItemVendaController;
+use App\Http\Controllers\CompraController;
+use App\Http\Controllers\ItemCompraController;
+use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\ItemVendaController;   
+
 
 // --------------------------------------------------
 // Autenticação
@@ -261,3 +265,89 @@ Route::post('/logout-cliente', [ClienteLoginController::class, 'logout'])
     ->name('cliente.logout');
 
     //reatorio
+
+
+// --------------------------------------------------
+// Compras
+// --------------------------------------------------
+
+Route::get('/compras', [CompraController::class, 'index'])
+    ->name('compras.index');
+
+Route::get('/compras/create', [CompraController::class, 'create'])
+    ->name('compras.create');
+
+Route::post('/compras', [CompraController::class, 'store'])
+    ->name('compras.store');
+
+Route::post('/compras/search', [CompraController::class, 'search'])
+    ->name('compras.search');
+
+Route::get('/compras/{compra}/edit', [CompraController::class, 'edit'])
+    ->name('compras.edit');
+
+Route::put('/compras/{compra}', [CompraController::class, 'update'])
+    ->name('compras.update');
+
+Route::delete('/compras/{compra}', [CompraController::class, 'destroy'])
+    ->name('compras.destroy');
+
+
+Route::get('/compras/relatorio', [ CompraController::class,'report'
+])->name('compras.report');
+
+Route::get('/compras/ValorGastoComprasChart.blade',
+    [CompraController::class, 'ValorGastoComprasChart']
+)->name('compras.ValorGastoComprasChart');
+// --------------------------------------------------
+// Itens do venda
+// --------------------------------------------------
+
+Route::get('/item_compra', [ItemCompraController::class, 'index'])
+    ->name('item_compra.list');
+
+Route::get('/item_compra/create', [ItemCompraController::class, 'create'])
+    ->name('item_compra.create');
+
+Route::post('/item_compra', [ItemCompraController::class, 'store'])
+    ->name('item_compra.store');
+
+Route::post('/item_compra/search', [ItemCompraController::class, 'search'])
+    ->name('item_compra.search');
+
+Route::get('/item_compra/{id}/edit', [ItemCompraController::class, 'edit'])
+    ->name('item_compra.edit');
+
+Route::put('/item_compra/{id}', [ItemCompraController::class, 'update'])
+    ->name('item_compra.update');
+
+Route::delete('/item_compra/{id}', [ItemCompraController::class, 'destroy'])
+    ->name('item_compra.destroy');
+
+
+    
+
+// --------------------------------------------------
+// Compras
+// --------------------------------------------------
+
+Route::get('/materiais', [MaterialController::class, 'index'])
+    ->name('materiais.index');
+
+Route::get('/materiais/create', [MaterialController::class, 'create'])
+    ->name('materiais.create');
+
+Route::post('/materiais', [MaterialController::class, 'store'])
+    ->name('materiais.store');
+
+Route::post('/materiais/search', [MaterialController::class, 'search'])
+    ->name('materiais.search');
+
+Route::get('/materiais/{materiais}/edit', [MaterialController::class, 'edit'])
+    ->name('materiais.edit');
+
+Route::put('/materiais/{materiais}', [MaterialController::class, 'update'])
+    ->name('materiais.update');
+
+Route::delete('/materiais/{materiais}', [MaterialController::class, 'destroy'])
+    ->name('materiais.destroy');

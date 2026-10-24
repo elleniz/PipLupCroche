@@ -49,17 +49,40 @@
                 <a class="nav-link fw-semibold"
                    style="color: #55003E; font-size: 14px;"
                    href="{{ url('vendas') }}">
-                    PEDIDOS
+                    VENDAS
                 </a>
             </li>
 
             <li class="nav-item">
-    <a class="nav-link fw-semibold"
-       style="color: #55003E; font-size: 14px;"
-       href="{{ url('item_venda') }}">
-        ITENS DE PEDIDOS
-    </a>
-</li>
+                <a class="nav-link fw-semibold"
+                style="color: #55003E; font-size: 14px;"
+                href="{{ url('item_venda') }}">
+                    ITENS DE VENDAS
+                </a>
+
+            <li class="nav-item">
+                <a class="nav-link fw-semibold"
+                style="color: #55003E; font-size: 14px;"
+                href="{{ url('compras') }}">
+                    COMPRAS
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link fw-semibold"
+                style="color: #55003E; font-size: 14px;"
+                href="{{ url('item_compra') }}">
+                    ITENS DE COMPRAS
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link fw-semibold"
+                style="color: #55003E; font-size: 14px;"
+                href="{{ url('materiais') }}">
+                    MATERIAIS
+                </a>
+            </li>
 
         </ul>
 

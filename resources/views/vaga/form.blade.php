@@ -68,7 +68,6 @@
                value="{{ old('id', $data->id ?? '') }}">
 
 
-        {{-- FUNCIONÁRIO --}}
 
         <div class="mb-3">
 
@@ -121,8 +120,6 @@
         </div>
 
 
-        {{-- FUNÇÃO --}}
-
         <div class="mb-3">
 
             <label for="funcao"
@@ -159,8 +156,6 @@
 
         </div>
 
-
-        {{-- SALÁRIO --}}
 
         <div class="mb-3">
 
@@ -289,7 +284,6 @@
 </div>
 
 
-        {{-- TEMPO DE PROFISSÃO --}}
 
         <div class="mb-3">
 
@@ -326,9 +320,6 @@
             @enderror
 
         </div>
-
-
-        {{-- BOTÕES --}}
 
         <div class="d-flex justify-content-between mt-3">
 

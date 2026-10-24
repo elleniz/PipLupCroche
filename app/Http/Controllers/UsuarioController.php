@@ -137,24 +137,37 @@ class UsuarioController extends Controller
     }
 
 
-    public function update(Request $request, $id)
-    {
-        $usuario = Usuario::with('vaga')->findOrFail($id);
+    
+public function update(Request $request, $id)
+{
+    $usuario = Usuario::with('vaga')->findOrFail($id);
 
-        $this->validateForm($request, $id);
+    $this->validateForm($request, $id);
 
+    $nome_imagem = $usuario->imagem;
 
-        $usuario->update([
-            'nome' => $request->nome,
-            'cpf' => $request->cpf,
-            'telefone' => $request->telefone,
-            'email' => $request->email,
-            'endereco' => $request->endereco,
-            'data_nascimento' => $request->data_nascimento,
-            'tipo' => $request->tipo,
-            'imagem' => $request->imagem ?? null,
-        ]);
+    // Verifica se uma nova imagem foi enviada
+    if ($request->hasFile('imagem')) {
 
+        $imagem = $request->file('imagem');
+
+        // Cria um nome para o novo arquivo
+        $nome_imagem = date('YmdHis') . '.' . $imagem->getClientOriginalExtension();
+
+        // Salva a imagem na pasta dos usuários
+        $imagem->storeAs('imagem/usuario', $nome_imagem, 'public');
+    }
+
+    $usuario->update([
+        'nome' => $request->nome,
+        'cpf' => $request->cpf,
+        'telefone' => $request->telefone,
+        'email' => $request->email,
+        'endereco' => $request->endereco,
+        'data_nascimento' => $request->data_nascimento,
+        'tipo' => $request->tipo,
+        'imagem' => $nome_imagem,
+    ]);
 
         /*
          * FUNCIONÁRIO
@@ -265,22 +278,25 @@ class UsuarioController extends Controller
     }
 
 
-    public function destroy($id)
-    {
-        $usuario = Usuario::findOrFail($id);
+    
+public function destroy($id)
+{
+    $usuario = Usuario::findOrFail($id);
 
-        /*
-         * A migration de vagas usa nullOnDelete().
-         *
-         * Portanto, ao excluir o funcionário,
-         * a vaga continua existindo e fica aberta.
-         */
-        $usuario->delete();
-
+    
+    if (\App\Models\Venda::where('usuario_id', $usuario->id)->exists()) {
         return redirect()
             ->route('usuario.list')
-            ->with('success', 'Usuário excluído com sucesso!');
+            ->with('erro', 'Não é possível excluir este usuário, pois ele possui vendas cadastradas.');
     }
+
+    $usuario->delete();
+
+    return redirect()
+        ->route('usuario.list')
+        ->with('success', 'Usuário excluído com sucesso!');
+}
+
 
 
     public function search(Request $request)

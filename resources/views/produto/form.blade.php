@@ -56,7 +56,6 @@
            name="id"
            value="{{ old('id', $data->id ?? '') }}">
 
-    {{-- NOME --}}
     <div class="mb-3">
 
         <label for="nome"
@@ -80,7 +79,6 @@
 
     </div>
 
-    {{-- PREÇO --}}
     <div class="mb-3">
 
         <label for="preco"
@@ -105,7 +103,6 @@
 
     </div>
 
-    {{-- QUANTIDADE --}}
     <div class="mb-3">
 
         <label for="quantidade"
@@ -129,7 +126,6 @@
 
     </div>
 
-    {{-- CATEGORIA --}}
     <div class="mb-3">
 
         <label for="categoria_id"
@@ -166,7 +162,6 @@
 
     </div>
 
-    {{-- DESCRIÇÃO --}}
     <div class="mb-3">
 
         <label for="descricao"
@@ -190,7 +185,6 @@
 
     </div>
 
-    {{-- MATERIAL --}}
     <div class="mb-3">
 
         <label for="material"
@@ -209,7 +203,7 @@
                        font-size: 13px;
                        height: 40px;
                        padding: 7px 12px;">
-<p>Material salvo: {{ $data->material ?? 'NÃO ENCONTRADO' }}</p>
+            <p>Material salvo: {{ $data->material ?? 'NÃO ENCONTRADO' }}</p>
             <option value="">Selecione o material</option>
 
 
@@ -247,7 +241,6 @@
 
     </div>
 
-    {{-- PESO --}}
     <div class="mb-3">
 
         <label for="peso"
@@ -280,7 +273,6 @@
                 <input type="file" name="imagem" class="form-control" value="{{ old('imagem', $data->imagem ?? '') }}">
             </div>
 
-    {{-- BOTÕES --}}
     <div class="d-flex justify-content-between mt-3">
 
         <button type="submit"

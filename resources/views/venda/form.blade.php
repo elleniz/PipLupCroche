@@ -45,7 +45,6 @@
             @method('PUT')
         @endif
 
-        {{-- PRIMEIRO CONTÊINER: DADOS DO PEDIDO --}}
         <div class="p-4"
              style="background-color: #fff;
                     border: 1px solid #ddd;
@@ -55,7 +54,6 @@
                     width: 100%;
                     margin: 0 auto;">
 
-            {{-- CLIENTE --}}
             <div class="mb-3">
                 <label for="usuario_id" class="form-label"
                        style="color: #555; font-size: 13px; font-weight: 500;">
@@ -82,7 +80,6 @@
                 @enderror
             </div>
 
-            {{-- DATA --}}
             <div class="mb-3">
                 <label for="data" class="form-label"
                        style="color: #555; font-size: 13px; font-weight: 500;">
@@ -99,7 +96,6 @@
                 @enderror
             </div>
 
-            {{-- PRAZO DE ENTREGA --}}
             <div class="mb-3">
                 <label for="prazo_entrega" class="form-label"
                        style="color: #555; font-size: 13px; font-weight: 500;">
@@ -116,7 +112,6 @@
                 @enderror
             </div>
 
-            {{-- STATUS --}}
             <div class="mb-3">
                 <label for="status" class="form-label"
                        style="color: #555; font-size: 13px; font-weight: 500;">
@@ -153,7 +148,6 @@
 
         </div>
 
-        {{-- TÍTULO DOS PRODUTOS --}}
         <div style="text-align: center; margin-bottom: 20px;">
             <h4 style="color: #6d3f36;
                        font-family: Georgia, serif;
@@ -169,7 +163,6 @@
             </p>
         </div>
 
-        {{-- SEGUNDO CONTÊINER: PRODUTOS --}}
         <div class="p-4 mt-4"
              style="background-color: #fff;
                     border: 1px solid #ddd;
@@ -250,7 +243,7 @@
                            border: none;
                            border-radius: 20px;
                            padding: 8px 16px;">
-                + Adicionar novo produto
+                Adicionar novo produto
             </button>
 
             @error('produtos')
@@ -278,7 +271,6 @@
                 e nas quantidades informadas.
             </p>
 
-            {{-- BOTÕES --}}
             <div class="d-flex justify-content-between mt-3">
 
                 <button type="submit"

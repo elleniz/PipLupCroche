@@ -61,7 +61,6 @@
                value="{{ old('id', $data->id ?? '') }}">
 
 
-        {{-- NOME --}}
 
         <div class="mb-3">
 
@@ -87,7 +86,6 @@
         </div>
 
 
-        {{-- CPF --}}
 
         <div class="mb-3">
 
@@ -113,7 +111,6 @@
         </div>
 
 
-        {{-- TELEFONE --}}
 
         <div class="mb-3">
 
@@ -139,7 +136,6 @@
         </div>
 
 
-        {{-- E-MAIL --}}
 
         <div class="mb-3">
 
@@ -165,7 +161,6 @@
         </div>
 
 
-        {{-- ENDEREÇO --}}
 
         <div class="mb-3">
 
@@ -191,7 +186,6 @@
         </div>
 
 
-        {{-- DATA DE NASCIMENTO --}}
 
         <div class="mb-3">
 
@@ -217,7 +211,6 @@
         </div>
 
 
-        {{-- TIPO --}}
 
         <div class="mb-3">
 
@@ -257,7 +250,6 @@
         </div>
 
 
-        {{-- DADOS DA VAGA --}}
 
         <div id="dadosVaga"
              style="display: none;
@@ -272,9 +264,6 @@
                        margin-bottom: 20px;">
                 Dados da Vaga
             </h5>
-
-
-            {{-- ESCOLHA DA VAGA --}}
 
             <div class="mb-3">
 
@@ -308,9 +297,6 @@
                 </select>
 
             </div>
-
-
-            {{-- VAGA EXISTENTE --}}
 
             <div id="vagaExistente"
                  class="mb-3"
@@ -359,7 +345,6 @@
             </div>
 
 
-            {{-- FUNÇÃO --}}
 
             <div class="mb-3">
 
@@ -385,7 +370,6 @@
             </div>
 
 
-            {{-- SALÁRIO --}}
 
             <div class="mb-3">
 
@@ -412,7 +396,6 @@
             </div>
 
 
-            {{-- ESCALA --}}
 
             <div class="mb-3">
 
@@ -460,7 +443,6 @@
             </div>
 
 
-            {{-- JORNADA --}}
 
             <div class="mb-3">
 
@@ -507,9 +489,6 @@
 
             </div>
 
-
-            {{-- TURNO --}}
-
             <div class="mb-3">
 
                 <label for="turno"
@@ -555,9 +534,6 @@
 
             </div>
 
-
-            {{-- TEMPO DE PROFISSÃO --}}
-
             <div class="mb-3">
 
                 <label for="tempo_profissao"
@@ -582,9 +558,6 @@
             </div>
 
         </div>
-
-
-        {{-- BOTÕES --}}
 
         <div class="d-flex justify-content-between mt-3">
 

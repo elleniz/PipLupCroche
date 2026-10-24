@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use App\Models\Produto;
 use App\Models\Usuario;
+use App\Models\ItemVenda;
 use App\Models\Venda;
 use App\Charts\ProdutosMaisVendidosChart;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -15,17 +16,15 @@ class VendaController extends Controller
 {
     public function index()
     {
-        $dados = Venda::with('usuario', 'produtos')->get();
+        $dados = Venda::with('usuario', 'itensVenda')->get();
 
         return view('venda.list', compact('dados'));
     }
 
     public function create()
     {
-        // Pega somente usuários do tipo CLIENTE
         $usuarios = Usuario::where('tipo', 'CLIENTE')->get();
 
-        // Pega os produtos disponíveis para a venda
         $produtos = Produto::all();
 
         return view('venda.form', compact('usuarios', 'produtos'));
@@ -89,14 +88,12 @@ class VendaController extends Controller
             'quantidades.*.min' => 'A quantidade deve ser pelo menos 1.',
         ]);
 
-        // Verifica se existe uma quantidade para cada produto
         if (count($request->produtos) != count($request->quantidades)) {
             throw ValidationException::withMessages([
                 'quantidades' => 'Informe a quantidade de cada produto.',
             ]);
         }
 
-        // Verifica se o usuário selecionado é um cliente
         $usuario = Usuario::find($request->usuario_id);
 
         if (!$usuario || $usuario->tipo !== 'CLIENTE') {
@@ -123,7 +120,6 @@ class VendaController extends Controller
             $total = 0;
             $itens = [];
 
-            // Adiciona os produtos à venda e calcula o valor total
             foreach ($request->produtos as $indice => $produtoId) {
                 $produto = Produto::findOrFail($produtoId);
                 $quantidade = (int) $request->quantidades[$indice];
@@ -135,10 +131,8 @@ class VendaController extends Controller
                 $total += $produto->preco * $quantidade;
             }
 
-            // Salva os produtos relacionados à venda
             $venda->produtos()->attach($itens);
 
-            // Atualiza o valor total da venda
             $venda->update([
                 'valor_total' => $total,
             ]);
@@ -152,12 +146,10 @@ class VendaController extends Controller
     {
         $data = Venda::with('produtos')->findOrFail($id);
 
-        // Pega os usuários do tipo CLIENTE
         $usuarios = Usuario::where('tipo', 'CLIENTE')
             ->orWhere('id', $data->usuario_id)
             ->get();
 
-        // Pega os produtos
         $produtos = Produto::all();
 
         return view('venda.form', compact('data', 'usuarios', 'produtos'));
@@ -170,7 +162,6 @@ class VendaController extends Controller
         DB::transaction(function () use ($request, $id) {
             $venda = Venda::findOrFail($id);
 
-            // Atualiza os dados da venda
             $venda->update([
                 'usuario_id' => $request->usuario_id,
                 'data' => $request->data,
@@ -181,7 +172,6 @@ class VendaController extends Controller
             $total = 0;
             $itens = [];
 
-            // Atualiza os produtos e suas quantidades
             foreach ($request->produtos as $indice => $produtoId) {
                 $produto = Produto::findOrFail($produtoId);
                 $quantidade = (int) $request->quantidades[$indice];
@@ -193,10 +183,8 @@ class VendaController extends Controller
                 $total += $produto->preco * $quantidade;
             }
 
-            // Sincroniza os produtos da venda
             $venda->produtos()->sync($itens);
 
-            // Atualiza o valor total
             $venda->update([
                 'valor_total' => $total,
             ]);
@@ -210,7 +198,6 @@ class VendaController extends Controller
     {
         $venda = Venda::findOrFail($id);
 
-        // Remove os produtos associados antes de excluir
         $venda->produtos()->detach();
 
         $venda->delete();
@@ -233,7 +220,6 @@ class VendaController extends Controller
                     })
                     ->get();
             } else {
-                // Permite somente campos válidos para pesquisa
                 $camposPermitidos = [
                     'data',
                     'prazo_entrega',
@@ -288,4 +274,5 @@ class VendaController extends Controller
             'chart' => $chart->build(),
         ]);
     }
+    
 }

@@ -53,7 +53,6 @@
            name="id"
            value="{{ old('id', $data->id ?? '') }}">
 
-    {{-- PEDIDO --}}
     <div class="mb-3">
 
         <label for="venda_id"
@@ -91,7 +90,6 @@
 
     </div>
 
-    {{-- PRODUTO --}}
     <div class="mb-3">
 
         <label for="produto_id"
@@ -129,7 +127,6 @@
 
     </div>
 
-    {{-- QUANTIDADE --}}
     <div class="mb-3">
 
         <label for="quantidade"
@@ -155,7 +152,6 @@
 
     </div>
 
-    {{-- BOTÕES --}}
     <div class="d-flex justify-content-between mt-3">
 
         <button type="submit"

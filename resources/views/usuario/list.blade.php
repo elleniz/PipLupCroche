@@ -6,6 +6,23 @@
 
 <div style="background-color: #fffaf6; min-height: 100vh; padding-bottom: 40px;">
 
+
+    <div style="padding: 15px 40px 0 40px;">
+
+        @if (session('erro'))
+            <div class="alert alert-danger">
+                {{ session('erro') }}
+            </div>
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+    </div>
+
     <div class="row"
          style="background-color: #fffaf6; padding: 30px 40px;">
 

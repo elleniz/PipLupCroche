@@ -60,7 +60,6 @@
             value="<?php echo e(old('id', $data->id ?? '')); ?>">
 
 
-        
 
         <div class="mb-3">
 
@@ -86,9 +85,6 @@
 
         </div>
 
-
-        
-
         <div class="mb-3">
 
             <label for="cpf"
@@ -112,9 +108,6 @@
                 value="<?php echo e(old('cpf', $data->cpf ?? '')); ?>">
 
         </div>
-
-
-        
 
         <div class="mb-3">
 
@@ -140,9 +133,6 @@
 
         </div>
 
-
-        
-
         <div class="mb-3">
 
             <label for="email"
@@ -166,9 +156,6 @@
                 value="<?php echo e(old('email', $data->email ?? '')); ?>">
 
         </div>
-
-
-        
 
         <div class="mb-3">
 
@@ -194,9 +181,6 @@
 
         </div>
 
-
-        
-
         <div class="mb-3">
 
             <label for="data_nascimento"
@@ -219,9 +203,6 @@
                 value="<?php echo e(old('data_nascimento', $data->data_nascimento ?? '')); ?>">
 
         </div>
-
-
-        
 
         <div class="mb-3">
 
@@ -260,9 +241,6 @@
 
         </div>
 
-
-        
-
         <div id="dadosVaga"
             style="display: none;
                     border-top: 1px solid #ddd;
@@ -276,9 +254,6 @@
                     margin-bottom: 20px;">
                 Dados da Vaga
             </h5>
-
-
-            
 
             <div class="mb-3">
 
@@ -319,9 +294,6 @@
                 </div>
 
             </div>
-
-
-            
 
             <div id="selecionarVaga"
                 class="mb-3"
@@ -372,9 +344,6 @@
 
             </div>
 
-
-            
-
             <div class="mb-3">
 
                 <label for="funcao"
@@ -422,9 +391,6 @@
 
             </div>
 
-
-            
-
             <div class="mb-3">
 
                 <label for="salario"
@@ -449,9 +415,6 @@
                     value="<?php echo e(old('salario', $data->vaga->salario ?? '')); ?>">
 
             </div>
-
-
-            
 
             <div class="mb-3">
 
@@ -499,9 +462,6 @@
                 </select>
 
             </div>
-
-
-            
 
             <div class="mb-3">
 
@@ -551,8 +511,6 @@
             </div>
 
 
-            
-
             <div class="mb-3">
 
                 <label for="turno"
@@ -601,8 +559,6 @@
             </div>
 
 
-            
-
             <div class="mb-3">
 
                 <label for="tempo_profissao"
@@ -631,17 +587,43 @@
         </div>
 
         <div class="col-6">
-                <label for="imagem">Imagem</label>
+                    <label for="imagem">Imagem</label>
+                            <div class="mb-3">
+                <label for="imagem"
+                    class="form-label"
+                    style="color: #555;
+                            font-size: 13px;
+                            font-weight: 500;">
+                    Imagem do usuário
+                </label>
+
                 <?php
-                    $nome_imagem = !empty($data->imagem) ? $data->imagem : 'sem_imagem.jpg';
+                    $nome_imagem = !empty($data->imagem)
+                        ? $data->imagem
+                        : 'sem_imagem.jpg';
                 ?>
-                <img src="/storage/<?php echo e($nome_imagem); ?>" class="rounded-circle" width="200px" height="200px"
-                    alt="Imagem" />
-                <input type="file" name="imagem" class="form-control" value="<?php echo e(old('imagem', $data->imagem ?? '')); ?>">
-            </div>
+
+                <div style="margin-bottom: 12px;">
+                    <img src="<?php echo e(asset('storage/imagem/usuario/' . $nome_imagem)); ?>"
+                        class="rounded-circle"
+                        width="150"
+                        height="150"
+                        style="object-fit: cover; border: 1px solid #ddd;"
+                        alt="Imagem do usuário">
+                </div>
+
+                <label for="imagem" style="font-size: 13px; color: #555;">
+                    Escolher outra imagem (opcional)
+                </label>
+
+            <input type="file"
+                name="imagem"
+                id="imagem"
+                class="form-control"
+                accept="image/*">
+        </div>
 
 
-        
 
         <div class="d-flex justify-content-between mt-3">
 
@@ -674,7 +656,7 @@
 
 </div>
 
-
+<!--js-->
 <script>
     function mostrarDadosVaga() {
 

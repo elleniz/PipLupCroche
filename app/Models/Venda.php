@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Usuario;
+use App\Models\ItemVenda;
 
 class Venda extends Model
 {
@@ -32,4 +33,8 @@ public function usuario()
     return $this->belongsTo(Usuario::class, 'usuario_id');
 }
 
+public function itensVenda()
+{
+    return $this->hasMany(ItemVenda::class);
+}
 }

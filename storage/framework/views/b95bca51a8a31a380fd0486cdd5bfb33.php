@@ -44,7 +44,6 @@
             <?php echo method_field('PUT'); ?>
         <?php endif; ?>
 
-        
         <div class="p-4"
              style="background-color: #fff;
                     border: 1px solid #ddd;
@@ -54,7 +53,6 @@
                     width: 100%;
                     margin: 0 auto;">
 
-            
             <div class="mb-3">
                 <label for="usuario_id" class="form-label"
                        style="color: #555; font-size: 13px; font-weight: 500;">
@@ -89,7 +87,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
             </div>
 
-            
             <div class="mb-3">
                 <label for="data" class="form-label"
                        style="color: #555; font-size: 13px; font-weight: 500;">
@@ -113,7 +110,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
             </div>
 
-            
             <div class="mb-3">
                 <label for="prazo_entrega" class="form-label"
                        style="color: #555; font-size: 13px; font-weight: 500;">
@@ -137,7 +133,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
             </div>
 
-            
             <div class="mb-3">
                 <label for="status" class="form-label"
                        style="color: #555; font-size: 13px; font-weight: 500;">
@@ -182,7 +177,6 @@ unset($__errorArgs, $__bag); ?>
 
         </div>
 
-        
         <div style="text-align: center; margin-bottom: 20px;">
             <h4 style="color: #6d3f36;
                        font-family: Georgia, serif;
@@ -198,7 +192,6 @@ unset($__errorArgs, $__bag); ?>
             </p>
         </div>
 
-        
         <div class="p-4 mt-4"
              style="background-color: #fff;
                     border: 1px solid #ddd;
@@ -280,7 +273,7 @@ unset($__errorArgs, $__bag); ?>
                            border: none;
                            border-radius: 20px;
                            padding: 8px 16px;">
-                + Adicionar novo produto
+                Adicionar novo produto
             </button>
 
             <?php $__errorArgs = ['produtos'];
@@ -322,7 +315,6 @@ unset($__errorArgs, $__bag); ?>
                 e nas quantidades informadas.
             </p>
 
-            
             <div class="d-flex justify-content-between mt-3">
 
                 <button type="submit"

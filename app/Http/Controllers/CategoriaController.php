@@ -20,7 +20,7 @@ class CategoriaController extends Controller
             if ($id) {
                 $data = Categoria::findOrFail($id);
                 $action = route('categoria.update', $id);
-            } else {
+            } else { #se n tiver id 
                 $data = new Categoria();
                 $action = route('categoria.store');
             }
@@ -120,6 +120,7 @@ class CategoriaController extends Controller
             'tipo.max' => 'O tipo pode ter no máximo 50 caracteres.',
         ]);
 
+        //volta o que foi enviado pelo usuario 
         return $request->only([
             'nome',
             'descricao',

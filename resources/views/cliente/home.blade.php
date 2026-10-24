@@ -42,7 +42,7 @@ z
 
 <div style="background-color: #fff6ed;">
 
-    {{-- MENSAGEM DE SUCESSO --}}
+    
     @if (session('success'))
         <div class="container pt-3">
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -58,7 +58,7 @@ z
         </div>
     @endif
 
-    {{-- MENSAGEM DE ERRO --}}
+
     @if (session('error'))
         <div class="container pt-3">
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -74,7 +74,7 @@ z
         </div>
     @endif
 
-    {{-- ERROS DE VALIDAÇÃO --}}
+   
     @if ($errors->any())
         <div class="container pt-3">
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -100,7 +100,7 @@ z
 
     <main class="container mt-0">
 
-        {{-- CARROSSEL --}}
+    
         <div
             id="carouselPipLup"
             class="carousel slide"
@@ -212,9 +212,7 @@ z
 
         </div>
 
-        {{-- ===================================================== --}}
-        {{-- LANÇAMENTO --}}
-        {{-- ===================================================== --}}
+      
 
         @php
             $lancamentos = [
@@ -332,9 +330,7 @@ z
             ];
         @endphp
 
-        {{-- ===================================================== --}}
-        {{-- FUNÇÃO VISUAL DOS CARDS --}}
-        {{-- ===================================================== --}}
+       
 
         @foreach ([
             'LANÇAMENTO' => $lancamentos,

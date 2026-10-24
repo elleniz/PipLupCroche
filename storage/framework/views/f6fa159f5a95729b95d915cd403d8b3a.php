@@ -194,7 +194,6 @@
 
                     </td>
 
-                    
                     <td style="padding: 16px;
                                background-color: <?php echo e($loop->odd ? '#f4dada' : '#fff4f1'); ?>;">
 
